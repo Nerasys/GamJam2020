@@ -28,38 +28,22 @@ public class ControlerPlayer : MonoBehaviour
 
     Rigidbody rb;
 
-
-
     // Use this for initialization
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>();
-
-       
+        rb = gameObject.GetComponent<Rigidbody>(); 
     }
 
     void FixedUpdate()
     {
-     
-
     }
 
     // Update is called once per frame
     void Update()
     {
         OnDrive();
-
         OnLimit();
-
-
-
     }
-
-    void OnCollisionEnter()
-    {
-      
-    }
-
 
     void OnDrive()
     {
