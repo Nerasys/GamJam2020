@@ -27,6 +27,6 @@ public class Function : MonoBehaviour
 
     void Dialog2GameOver()
     {
-        Debug.Log("Dylan le con");
+        Debug.Log("Dylan le mec torp fort");
     }
 }
