@@ -76,15 +76,17 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKey(SteerLeft))
         {
-           // rb.angularVelocity += transform.up * -rotateSpeed *Mathf.Abs(rb.velocity.z/limSpeedMax);
-            rb.AddRelativeTorque(transform.up * -rotateSpeed * Mathf.Abs(rb.velocity.z / limSpeedMax));
+            // rb.angularVelocity += transform.up * -rotateSpeed *Mathf.Abs(rb.velocity.z/limSpeedMax);
+            //  rb.AddRelativeTorque(transform.up * -rotateSpeed * Mathf.Abs(rb.velocity.z / limSpeedMax));
+            transform.Rotate(Vector3.up * -rotateSpeed);
+
+
         }
 
 
         if (Input.GetKey(SteerRight))
         {
-            //rb.angularVelocity += transform.up* rotateSpeed * Mathf.Abs(rb.velocity.z/ limSpeedMax);
-            rb.AddRelativeTorque(transform.up * rotateSpeed * Mathf.Abs(rb.velocity.z / limSpeedMax));
+            transform.Rotate(Vector3.up * +rotateSpeed);
         }
     }
 
