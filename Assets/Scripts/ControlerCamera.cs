@@ -5,7 +5,12 @@ using UnityEngine;
 public class ControlerCamera : MonoBehaviour
 {
     // Start is called before the first frame update
-    [SerializeField] Transform transformVirtual;
+    [SerializeField] Transform player;
+
+    private bool isMove = false;
+    float distancePC = 0.0f;
+    float distanceToMoveCam = 5.0f;
+    
     void Start()
     {
         
@@ -14,6 +19,13 @@ public class ControlerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transformVirtual.position = transform.position;
+           
+            distancePC = Mathf.Abs(transform.position.x - player.position.x);
+            if(distanceToMoveCam < distancePC)
+            {
+               Debug.Log(Mathf.Lerp(player.position.x, transform.position.x, Time.deltaTime));
+               transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
+            }
+                
     }
 }
