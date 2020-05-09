@@ -95,7 +95,7 @@ public class Generation : MonoBehaviour
         }
 
         numberRoomC = Random.Range(0, 3);
-        switch (numberRoomA)
+        switch (wall2)
         {
             case 0:
                 roomC.transform.GetChild(0 + numberRoomC).gameObject.SetActive(true);
