@@ -84,7 +84,6 @@ public class ControlerPlayer : MonoBehaviour
     {
         if (Input.GetKey(Accelerate))
         {
-<<<<<<< Updated upstream
             rb.AddForce(gameObject.transform.forward * moveSpeed);
             fx1Z.SetActive(true);
             fx2Z.SetActive(true);
@@ -94,7 +93,6 @@ public class ControlerPlayer : MonoBehaviour
             fx1Z.SetActive(false);
             fx2Z.SetActive(false);
 
-=======
             if (useRelativeForce)
             {
                 rb.AddRelativeForce(Vector3.forward * moveSpeed);
@@ -103,7 +101,6 @@ public class ControlerPlayer : MonoBehaviour
             {
                 rb.AddForce(gameObject.transform.forward * moveSpeed);
             }
->>>>>>> Stashed changes
         }
 
         if (Input.GetKey(Decelerate))
