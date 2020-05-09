@@ -84,15 +84,6 @@ public class ControlerPlayer : MonoBehaviour
     {
         if (Input.GetKey(Accelerate))
         {
-            rb.AddForce(gameObject.transform.forward * moveSpeed);
-            fx1Z.SetActive(true);
-            fx2Z.SetActive(true);
-        }
-        else
-        {
-            fx1Z.SetActive(false);
-            fx2Z.SetActive(false);
-
             if (useRelativeForce)
             {
                 rb.AddRelativeForce(Vector3.forward * moveSpeed);
@@ -101,6 +92,13 @@ public class ControlerPlayer : MonoBehaviour
             {
                 rb.AddForce(gameObject.transform.forward * moveSpeed);
             }
+            fx1Z.SetActive(true);
+            fx2Z.SetActive(true);
+        }
+        else
+        {
+            fx1Z.SetActive(false);
+            fx2Z.SetActive(false);
         }
 
         if (Input.GetKey(Decelerate))
