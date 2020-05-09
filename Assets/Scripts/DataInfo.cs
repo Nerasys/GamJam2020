@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class DataInfo : MonoBehaviour
 {
     // Start is called before the first frame update
 
-    private static GameManager instance;
-    public System.Action OnGameOver;
+    private static DataInfo instance;
 
-
+    public int score;
 
     private void Awake()
     {
@@ -23,28 +22,20 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public static GameManager GetInstance()
+    public static DataInfo GetInstance()
     {
         return instance;
     }
 
+
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
-
-
-    [ContextMenu("GameOver")]
-    void GameOver()
-    {
-        OnGameOver();
-    }
-
-
 }

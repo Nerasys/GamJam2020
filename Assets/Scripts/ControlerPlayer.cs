@@ -5,7 +5,8 @@ using UnityEngine;
 public class ControlerPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
-  
+    private static ControlerPlayer instance;
+    public System.Action OnRamassable;
 
     //Movement Information
     public float moveSpeed = 10.0f;
@@ -30,6 +31,25 @@ public class ControlerPlayer : MonoBehaviour
     Rigidbody rb;
 
     // Use this for initialization
+
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+    }
+
+    public static ControlerPlayer GetInstance()
+    {
+        return instance;
+    }
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>(); 
@@ -96,6 +116,22 @@ public class ControlerPlayer : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMin);
         }
+    }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject.tag == "Ramassable")
+        {
+            Ramassable();
+        }
+    }
+
+
+    [ContextMenu("Ramassable")]
+    void Ramassable()
+    {
+        OnRamassable();
     }
 }
 
