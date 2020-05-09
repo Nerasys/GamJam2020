@@ -9,6 +9,7 @@ public class ControlerPlayer : MonoBehaviour
 
     //Movement Information
     public float moveSpeed = 10.0f;
+    public float moveBoost = 10.0f;
     public float rotateSpeed  = 0.5f;
 
 
@@ -17,7 +18,7 @@ public class ControlerPlayer : MonoBehaviour
     public KeyCode Decelerate = KeyCode.S;
     public KeyCode SteerLeft = KeyCode.Q;
     public KeyCode SteerRight = KeyCode.D;
-
+    public KeyCode Boost = KeyCode.Space;
 
     //Movement Limit
 
@@ -60,17 +61,19 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKey(SteerLeft))
         {
-            // rb.angularVelocity += transform.up * -rotateSpeed *Mathf.Abs(rb.velocity.z/limSpeedMax);
-            //  rb.AddRelativeTorque(transform.up * -rotateSpeed * Mathf.Abs(rb.velocity.z / limSpeedMax));
             transform.Rotate(Vector3.up * -rotateSpeed);
-
-
         }
 
 
         if (Input.GetKey(SteerRight))
         {
             transform.Rotate(Vector3.up * +rotateSpeed);
+        }
+
+
+        if (Input.GetKeyDown(Boost))
+        {
+            rb.AddForce(gameObject.transform.forward * moveSpeed* moveBoost);
         }
     }
 
