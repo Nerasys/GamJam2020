@@ -583,6 +583,21 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2042968931366357555, guid: 086b1e6793250a444b735db421e550c9,
+        type: 3}
+      propertyPath: fx1Z
+      value: 
+      objectReference: {fileID: 1353525450}
+    - target: {fileID: 2042968931366357555, guid: 086b1e6793250a444b735db421e550c9,
+        type: 3}
+      propertyPath: fx2Z
+      value: 
+      objectReference: {fileID: 1731564414}
+    - target: {fileID: 2042968931366357555, guid: 086b1e6793250a444b735db421e550c9,
+        type: 3}
+      propertyPath: fxVitessBoost
+      value: 
+      objectReference: {fileID: 923848330}
     - target: {fileID: 2042968931366357557, guid: 086b1e6793250a444b735db421e550c9,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -641,6 +656,11 @@ PrefabInstance:
     - target: {fileID: 2042968931853936781, guid: 086b1e6793250a444b735db421e550c9,
         type: 3}
       propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381472607264287205, guid: 086b1e6793250a444b735db421e550c9,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4501447596084237052, guid: 086b1e6793250a444b735db421e550c9,
@@ -892,6 +912,11 @@ PrefabInstance:
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key1.b
       value: 0.9339623
+      objectReference: {fileID: 0}
+    - target: {fileID: 7313612661438890880, guid: 086b1e6793250a444b735db421e550c9,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7483008634826398507, guid: 086b1e6793250a444b735db421e550c9,
         type: 3}
@@ -17992,6 +18017,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e0854ccf8603ed54e970334c08243d66, type: 3}
+--- !u!1 &1353525450 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7313612661438890880, guid: 086b1e6793250a444b735db421e550c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 50777445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1357899657 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 457948, guid: e0854ccf8603ed54e970334c08243d66,
@@ -23703,6 +23734,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 475300, guid: 51f833eeb14fde142b366866ec47c9be,
     type: 3}
   m_PrefabInstance: {fileID: 1727382925}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1731564414 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2381472607264287205, guid: 086b1e6793250a444b735db421e550c9,
+    type: 3}
+  m_PrefabInstance: {fileID: 50777445}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1734668810 stripped
 Transform:

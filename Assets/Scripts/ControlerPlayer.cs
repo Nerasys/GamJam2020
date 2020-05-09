@@ -13,7 +13,7 @@ public class ControlerPlayer : MonoBehaviour
     //Movement Information
     public float moveSpeed = 10.0f;
     public float moveBoost = 10.0f;
-    public float rotateSpeed  = 0.5f;
+    public float rotateSpeed = 0.5f;
 
 
     //Controls
@@ -28,6 +28,16 @@ public class ControlerPlayer : MonoBehaviour
     public float limSpeedMin = -20.0f;
     public float limSpeedMax = 20.0f;
 
+    public float timerFXboost = 2.0f;
+    private float timerBoost = 0.0f;
+    bool isBoosted = false;
+    //Movemement 
+    [SerializeField]
+    public GameObject fx1Z;
+    [SerializeField]
+    public GameObject fx2Z;
+    [SerializeField]
+    public GameObject fxVitessBoost;
 
 
     Rigidbody rb;
@@ -74,6 +84,14 @@ public class ControlerPlayer : MonoBehaviour
         if (Input.GetKey(Accelerate))
         {
             rb.AddForce(gameObject.transform.forward * moveSpeed);
+            fx1Z.SetActive(true);
+            fx2Z.SetActive(true);
+        }
+        else
+        {
+            fx1Z.SetActive(false);
+            fx2Z.SetActive(false);
+
         }
 
         if (Input.GetKey(Decelerate))
@@ -100,40 +118,60 @@ public class ControlerPlayer : MonoBehaviour
             {
                 rb.AddForce(gameObject.transform.forward * moveSpeed * moveBoost);
                 data.boost = 0.0f;
+                isBoosted = true;
 
             }
         }
+
+
+        if (isBoosted)
+        {
+
+            if (timerBoost > timerFXboost)
+            {
+                fxVitessBoost.SetActive(false);
+                isBoosted = false;
+                timerBoost = 0.0f;
+            }
+            else
+            {
+                fxVitessBoost.SetActive(true);
+                timerBoost += Time.deltaTime;
+            }
+
+        }
+
     }
 
 
-    void OnLimit()
-    {
-        if(rb.velocity.x > limSpeedMax)
+        void OnLimit()
         {
-            rb.velocity = new Vector3(limSpeedMax, rb.velocity.y, rb.velocity.z);
+            if (rb.velocity.x > limSpeedMax)
+            {
+                rb.velocity = new Vector3(limSpeedMax, rb.velocity.y, rb.velocity.z);
+            }
+            if (rb.velocity.x < limSpeedMin)
+            {
+                rb.velocity = new Vector3(limSpeedMin, rb.velocity.y, rb.velocity.z);
+            }
+            if (rb.velocity.z > limSpeedMax)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMax);
+            }
+            if (rb.velocity.z < limSpeedMin)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMin);
+            }
         }
-        if (rb.velocity.x < limSpeedMin)
-        {
-            rb.velocity = new Vector3(limSpeedMin, rb.velocity.y, rb.velocity.z);
-        }
-        if (rb.velocity.z > limSpeedMax)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMax);
-        }
-        if (rb.velocity.z < limSpeedMin)
-        {
-            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMin);
-        }
-    }
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Ramassable")
+        private void OnTriggerEnter(Collider other)
         {
-            Ramassable();
+            if (other.gameObject.tag == "Ramassable")
+            {
+                Ramassable();
+            }
         }
-    }
 
 
     [ContextMenu("Ramassable")]
