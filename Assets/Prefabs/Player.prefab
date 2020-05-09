@@ -185,7 +185,7 @@ GameObject:
   - component: {fileID: 2042968931366357558}
   - component: {fileID: 2042968931366357556}
   - component: {fileID: 2042968931366357555}
-  - component: {fileID: 599445783}
+  - component: {fileID: 1174567879754700858}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -252,8 +252,26 @@ MonoBehaviour:
   SteerLeft: 113
   SteerRight: 100
   Boost: 32
+  useRelativeForce: 1
   limSpeedMin: -20
   limSpeedMax: 20
+  timerFXboost: 2
+  fx1Z: {fileID: 0}
+  fx2Z: {fileID: 0}
+  fxVitessBoost: {fileID: 0}
+--- !u!65 &1174567879754700858
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042968931366357545}
+  m_Material: {fileID: 13400000, guid: 080f3f1f739db1b42bb7729232baf0c1, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2, y: 1.5632792, z: 0.93824136}
+  m_Center: {x: 0, y: 0.7768402, z: 0.0661699}
 --- !u!1 &2381472607264287205
 GameObject:
   m_ObjectHideFlags: 0
