@@ -15,8 +15,7 @@ public class DataInfo : MonoBehaviour
     public float cancer;
     [SerializeField]
     public float cancerMax;
-
-
+   
     [SerializeField]
     public float boost;
     [SerializeField]
@@ -33,6 +32,11 @@ public class DataInfo : MonoBehaviour
 
     [SerializeField]
     public float DistanceDegatsIA;
+
+    [SerializeField]
+    public List<GameObject> myListItems = new List<GameObject>();
+
+
 
     private void Awake()
     {
