@@ -8980,6 +8980,36 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 981108133}
     m_Modifications:
+    - target: {fileID: 2048013472792619538, guid: 90a46d3379038524e95f366841bbe83b,
+        type: 3}
+      propertyPath: m_Parameters.alignment
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048013472792619538, guid: 90a46d3379038524e95f366841bbe83b,
+        type: 3}
+      propertyPath: m_Autodestruct
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048013474043527555, guid: 90a46d3379038524e95f366841bbe83b,
+        type: 3}
+      propertyPath: m_Autodestruct
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048013474193145799, guid: 90a46d3379038524e95f366841bbe83b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048013474263747577, guid: 90a46d3379038524e95f366841bbe83b,
+        type: 3}
+      propertyPath: m_Autodestruct
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048013474292809884, guid: 90a46d3379038524e95f366841bbe83b,
+        type: 3}
+      propertyPath: m_Autodestruct
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4027885378820331302, guid: 90a46d3379038524e95f366841bbe83b,
         type: 3}
       propertyPath: m_Name
