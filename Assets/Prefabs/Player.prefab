@@ -183,9 +183,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2042968931366357557}
   - component: {fileID: 2042968931366357558}
-  - component: {fileID: 2042968931366357544}
   - component: {fileID: 2042968931366357556}
   - component: {fileID: 2042968931366357555}
+  - component: {fileID: 599445783}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -216,19 +216,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042968931366357545}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &2042968931366357544
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042968931366357545}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2042968931366357556
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -257,9 +244,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 996ef80017d1b41498f5bc89a83c0851, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
-  moveBoost: 200
-  rotateSpeed: 1.1
+  moveSpeed: 4
+  moveBoost: 10
+  rotateSpeed: 1.3
   Accelerate: 122
   Decelerate: 115
   SteerLeft: 113
@@ -267,10 +254,6 @@ MonoBehaviour:
   Boost: 32
   limSpeedMin: -20
   limSpeedMax: 20
-  timerFXboost: 0.7
-  fx1Z: {fileID: 0}
-  fx2Z: {fileID: 0}
-  fxVitessBoost: {fileID: 0}
 --- !u!1 &2381472607264287205
 GameObject:
   m_ObjectHideFlags: 0
@@ -288,7 +271,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1704780749562835703
 Transform:
   m_ObjectHideFlags: 0
@@ -5561,7 +5544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4763579361479697362
 Transform:
   m_ObjectHideFlags: 0
@@ -10441,7 +10424,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 967845730683850475, guid: 528f208a36b2597419fce71d98b761a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 528f208a36b2597419fce71d98b761a5, type: 3}
 --- !u!4 &2042968931853936781 stripped
 Transform:
