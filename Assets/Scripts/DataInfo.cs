@@ -21,6 +21,8 @@ public class DataInfo : MonoBehaviour
     [SerializeField]
     public float boostMax;
 
+    [SerializeField]
+    public float cancerBoost;
 
     [SerializeField]
     public float regenBoost;
@@ -58,6 +60,7 @@ public class DataInfo : MonoBehaviour
     void Update()
     {
         BoostRegen();
+        CancerRegen();
     }
 
 
@@ -68,4 +71,13 @@ public class DataInfo : MonoBehaviour
             boost += Time.deltaTime * regenBoost;
         }
     }
+
+    void CancerRegen()
+    {
+        if (cancer < cancerMax)
+        {
+            cancer += Time.deltaTime * cancerBoost;
+        }
+    }
+
 }
