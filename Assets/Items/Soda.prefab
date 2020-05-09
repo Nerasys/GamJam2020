@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3972299296996610623}
   - component: {fileID: 6701780216445617501}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Soda
   m_TagString: Ramassable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2810307682209177007}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: -951608786083511892, guid: 9df7ca8c4a5c90a43a6b0dc652c11029, type: 3}
 --- !u!23 &6413734533502219995
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -107,5 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObligatoire: 0
-  myName: 
-  scoreGive: 0
+  myName: Very famous soda
+  scoreGive: 190

@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: PlayFabEditorPrefsSO
   m_EditorClassIdentifier: 
   DevAccountEmail: sylvain.frappez.web@gmail.com
-  DevAccountToken: dk4kc44s13xnajr9er8zcsgwhu6k7qiccw86m7z5na1bh867ig1bf5hx7w7irs6j9514h77upjrrwq5amy39ghoj6kcwmzbp7kd6ptji5xpytdkq4dcwzhr3jt15uwx3n3cxs397eowepf9haecfbofufimi96ytu3mjm1ptpwre6pk6tgbq8ch1krn8yp3pin3oed9b
-  SelectedStudio: 
+  DevAccountToken: 6i55g1nspm3too549ip9k75dwi9tn6rmm88zzc7ascmkbkybgn1qgpzgcqa9a4jix7949qjgyjonkrumazgyw9bekoo87crbzog3wbarzsbrqimucyde3gzai8wdohdc3eynijoyoyeebhmzrt1o89oai5bdmjti3ezgskscmqps9o1yw14tpz61yse94kzo6qz9d14x
+  SelectedStudio: GamJam
   SdkPath: Assets/PlayFabSDK
   EdExPath: 
   LocalCloudScriptPath: 
   PanelIsShown: 0
-  curMainMenuIdx: 0
+  curMainMenuIdx: 1
   curSubMenuIdx: 0
