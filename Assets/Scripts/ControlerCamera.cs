@@ -8,24 +8,49 @@ public class ControlerCamera : MonoBehaviour
     [SerializeField] Transform player;
 
     private bool isMove = false;
-    float distancePC = 0.0f;
-    float distanceToMoveCam = 5.0f;
+
+
+    /// <summary>
+    /// Camera following speed
+    /// </summary>
+    [SerializeField]
+    private float cameraSpeed = 3.5f;
+
     
+    /// <summary>
+    /// Camera following precision
+    /// </summary>
+    [SerializeField]
+    private float cameraPrecision = 0.1f;
+
+
+    private float startCameraXGap;
+    private float startCameraZGap;
+
+
+    /// <summary>
+    /// Check the start difference between camera and player position to reproduce it in the future camera movement.
+    /// </summary>
     void Start()
     {
-        
+        startCameraXGap = this.transform.position.x - player.position.x;
+        startCameraZGap = this.transform.position.z - player.position.z;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-           
-            distancePC = Mathf.Abs(transform.position.x - player.position.x);
-            if(distanceToMoveCam < distancePC)
-            {
-               Debug.Log(Mathf.Lerp(player.position.x, transform.position.x, Time.deltaTime));
-               transform.position = new Vector3(player.position.x, transform.position.y, transform.position.z);
-            }
-                
+
+    /// <summary>
+    /// Adapt the Camera position according to the player movement, with delay.
+    /// </summary>
+    private void FixedUpdate()
+    {   
+        //If the difference between player and Camera is higher than the Camera precision
+        if (Mathf.Abs(this.transform.position.x - player.position.x - startCameraXGap) > cameraPrecision || Mathf.Abs(this.transform.position.z - player.position.z - startCameraZGap) > cameraPrecision)
+        {
+            // Change the camera position following the Player position with Lerp Delay
+            this.transform.position = new Vector3(Mathf.Lerp(this.transform.position.x, player.transform.position.x + startCameraXGap, Time.deltaTime * cameraSpeed),
+                                                this.transform.position.y,
+                                                Mathf.Lerp(this.transform.position.z, player.transform.position.z + startCameraZGap, Time.deltaTime * cameraSpeed)
+                                                );
+        }
     }
 }
