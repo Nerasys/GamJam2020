@@ -10,6 +10,24 @@ public class DataInfo : MonoBehaviour
 
     public int score;
 
+    [SerializeField]
+    public float cancer;
+    [SerializeField]
+    public float cancerMax;
+
+
+    [SerializeField]
+    public float boost;
+    [SerializeField]
+    public float boostMax;
+
+
+    [SerializeField]
+    public float DegatsIA;
+
+    [SerializeField]
+    public float DistanceDegatsIA;
+
     private void Awake()
     {
         if (instance == null)
