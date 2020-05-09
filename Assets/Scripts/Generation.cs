@@ -7,7 +7,7 @@ public class Generation : MonoBehaviour
     // Start is called before the first frame update
     private static Generation instance;
 
-
+    public List<GameObject> walls = new List<GameObject>();
 
     private void Awake()
     {
@@ -28,8 +28,14 @@ public class Generation : MonoBehaviour
         return instance;
     }
     // Update is called once per frame
-    void Update()
+
+
+
+    private void Start()
     {
-        
+        int random = Random.Range(0, 3);
+
+
+
     }
 }

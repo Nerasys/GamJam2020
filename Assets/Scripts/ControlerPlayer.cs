@@ -92,13 +92,20 @@ public class ControlerPlayer : MonoBehaviour
             {
                 rb.AddForce(gameObject.transform.forward * moveSpeed);
             }
-            fx1Z.SetActive(true);
-            fx2Z.SetActive(true);
+
+
+              ParticleSystem.EmissionModule emission = fx1Z.GetComponent<ParticleSystem>().emission;
+              emission.enabled = true;
+              ParticleSystem.EmissionModule emission2 = fx2Z.GetComponent<ParticleSystem>().emission;
+              emission2.enabled = true;
+          
         }
         else
         {
-            fx1Z.SetActive(false);
-            fx2Z.SetActive(false);
+            ParticleSystem.EmissionModule emission = fx1Z.GetComponent<ParticleSystem>().emission;
+            emission.enabled = false;
+            ParticleSystem.EmissionModule emission2 = fx2Z.GetComponent<ParticleSystem>().emission;
+            emission2.enabled = false;
         }
 
         if (Input.GetKey(Decelerate))
