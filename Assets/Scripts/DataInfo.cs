@@ -23,6 +23,9 @@ public class DataInfo : MonoBehaviour
 
 
     [SerializeField]
+    public float regenBoost;
+
+    [SerializeField]
     public float DegatsIA;
 
     [SerializeField]
@@ -54,6 +57,15 @@ public class DataInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        BoostRegen();
+    }
+
+
+    void BoostRegen()
+    {
+        if(boost < boostMax)
+        {
+            boost += Time.deltaTime * regenBoost;
+        }
     }
 }

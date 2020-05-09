@@ -6,6 +6,8 @@ public class ControlerPlayer : MonoBehaviour
 {
     // Start is called before the first frame update
     private static ControlerPlayer instance;
+
+    DataInfo data;
     public System.Action OnRamassable;
 
     //Movement Information
@@ -52,7 +54,8 @@ public class ControlerPlayer : MonoBehaviour
 
     void Start()
     {
-        rb = gameObject.GetComponent<Rigidbody>(); 
+        rb = gameObject.GetComponent<Rigidbody>();
+        data = DataInfo.GetInstance();
     }
 
     void FixedUpdate()
@@ -93,7 +96,12 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKeyDown(Boost))
         {
-            rb.AddForce(gameObject.transform.forward * moveSpeed* moveBoost);
+            if (data.boost == data.boostMax)
+            {
+                rb.AddForce(gameObject.transform.forward * moveSpeed * moveBoost);
+                data.boost = 0.0f;
+
+            }
         }
     }
 

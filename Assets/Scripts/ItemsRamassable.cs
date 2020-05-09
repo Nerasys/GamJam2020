@@ -9,6 +9,7 @@ public class ItemsRamassable : MonoBehaviour
 
 
     public int scoreGive = 10;
+    public bool isObligatoire = true;
 
 
     void Start()
