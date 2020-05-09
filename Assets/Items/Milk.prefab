@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3972299296996610623}
   - component: {fileID: 6701780216445617501}
   m_Layer: 0
-  m_Name: Item
+  m_Name: Milk
   m_TagString: Ramassable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41,7 +41,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2810307682209177007}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  m_Mesh: {fileID: 5060444177187149915, guid: 092a01b58a0a8d945bb475a300db2c45, type: 3}
 --- !u!23 &6413734533502219995
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -106,6 +106,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ca3c5fc54dd78540a91300a7ecdcfa2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isObligatoire: 0
-  myName: 
-  scoreGive: 0
+  isObligatoire: 1
+  myName: Milk
+  scoreGive: 250
