@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 494468}
   - component: {fileID: 3345076}
   - component: {fileID: 2349004}
+  - component: {fileID: 1593682689410148227}
   m_Layer: 0
   m_Name: SI_Prop_Shoe_Slippers_05
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1593682689410148227
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146054}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.4557209, y: 0.10385598, z: 0.36610174}
+  m_Center: {x: 0.0000009536743, y: 0.05192799, z: 0.00000023841858}

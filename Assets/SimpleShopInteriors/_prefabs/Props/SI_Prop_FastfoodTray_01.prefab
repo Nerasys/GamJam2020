@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 439518}
   - component: {fileID: 3377158}
   - component: {fileID: 2321488}
+  - component: {fileID: 2749745772144164428}
   m_Layer: 0
   m_Name: SI_Prop_FastfoodTray_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2749745772144164428
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124354}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2024211, y: 0.68138236, z: 0.7486745}
+  m_Center: {x: -0.000002861023, y: 0.3467339, z: 0}

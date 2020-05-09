@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 434654}
   - component: {fileID: 3395862}
   - component: {fileID: 2391560}
+  - component: {fileID: -6429209256461935944}
   m_Layer: 0
   m_Name: SI_Prop_Arcade_DanceMachine
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-6429209256461935944
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138282}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.975729, y: 3.2548132, z: 3.6680324}
+  m_Center: {x: 0, y: 1.6274066, z: 0.00000011920929}

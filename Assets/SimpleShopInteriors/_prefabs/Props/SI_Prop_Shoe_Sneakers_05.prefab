@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 408506}
   - component: {fileID: 3301814}
   - component: {fileID: 2372866}
+  - component: {fileID: 8500118110690507381}
   m_Layer: 0
   m_Name: SI_Prop_Shoe_Sneakers_05
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &8500118110690507381
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 188416}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45890713, y: 0.15806872, z: 0.36610174}
+  m_Center: {x: 0.00000047683716, y: 0.07903436, z: 0.00000023841858}

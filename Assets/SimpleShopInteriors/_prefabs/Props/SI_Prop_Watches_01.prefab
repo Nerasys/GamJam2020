@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 470156}
   - component: {fileID: 3317770}
   - component: {fileID: 2387544}
+  - component: {fileID: -6625567448619874711}
   m_Layer: 0
   m_Name: SI_Prop_Watches_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-6625567448619874711
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 186612}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1735821, y: 0.55630875, z: 0.31106758}
+  m_Center: {x: 0.00000047683716, y: 0.27815437, z: 0}

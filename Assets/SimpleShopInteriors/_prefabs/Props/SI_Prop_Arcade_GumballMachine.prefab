@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 489024}
   - component: {fileID: 3392288}
   - component: {fileID: 2387554}
+  - component: {fileID: 445403612528535739}
   m_Layer: 0
   m_Name: SI_Prop_Arcade_GumballMachine
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &445403612528535739
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 152610}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8663729, y: 2.1293395, z: 1.0654048}
+  m_Center: {x: 0, y: 1.0646697, z: 0}

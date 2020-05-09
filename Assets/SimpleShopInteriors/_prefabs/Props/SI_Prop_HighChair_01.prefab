@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 468438}
   - component: {fileID: 3331488}
   - component: {fileID: 2347134}
+  - component: {fileID: -7716298911625313931}
   m_Layer: 0
   m_Name: SI_Prop_HighChair_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-7716298911625313931
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 128724}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.2063621, y: 1.7361633, z: 0.8479698}
+  m_Center: {x: 0, y: 0.8680816, z: -0.000000014901161}

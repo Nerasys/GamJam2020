@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 410470}
   - component: {fileID: 3394588}
   - component: {fileID: 2396062}
+  - component: {fileID: 2369843897696714569}
   m_Layer: 0
   m_Name: SI_Prop_Plate_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &2369843897696714569
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 102024}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.8133087, y: 0.043097496, z: 0.8133092}
+  m_Center: {x: 0, y: 0.021548748, z: 0}

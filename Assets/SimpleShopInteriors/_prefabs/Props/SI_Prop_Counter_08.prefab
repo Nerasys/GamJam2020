@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 491816}
   - component: {fileID: 3301608}
   - component: {fileID: 2387630}
+  - component: {fileID: -585853698248520533}
   m_Layer: 0
   m_Name: SI_Prop_Counter_08
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-585853698248520533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193710}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4, y: 1.4762356, z: 1.660244}
+  m_Center: {x: -2, y: 0.7381178, z: 0.5}

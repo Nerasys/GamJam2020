@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 486018}
   - component: {fileID: 3338228}
   - component: {fileID: 2372490}
+  - component: {fileID: 599709310044420231}
   m_Layer: 0
   m_Name: SI_Prop_Magazines_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &599709310044420231
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100638}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.45159435, y: 0.12686901, z: 0.58439827}
+  m_Center: {x: 0, y: 0.063434504, z: 0}

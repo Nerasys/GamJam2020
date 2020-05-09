@@ -90,6 +90,7 @@ GameObject:
   - component: {fileID: 499104}
   - component: {fileID: 3320226}
   - component: {fileID: 2337854}
+  - component: {fileID: 6049769582129244429}
   m_Layer: 0
   m_Name: SI_Prop_Shelf_Freezer_Preset_01
   m_TagString: Untagged
@@ -159,3 +160,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6049769582129244429
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 160652}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.87928, y: 4.5861464, z: 2.110424}
+  m_Center: {x: -3.9091578, y: 2.2930732, z: -0.8913746}

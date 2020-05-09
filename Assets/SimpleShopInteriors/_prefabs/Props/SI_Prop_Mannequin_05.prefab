@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 491884}
   - component: {fileID: 3398832}
   - component: {fileID: 2344246}
+  - component: {fileID: 6346365298810154987}
   m_Layer: 0
   m_Name: SI_Prop_Mannequin_05
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6346365298810154987
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 162108}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5029297, y: 2.7860718, z: 0.9503784}
+  m_Center: {x: 0, y: 1.3930359, z: 0}

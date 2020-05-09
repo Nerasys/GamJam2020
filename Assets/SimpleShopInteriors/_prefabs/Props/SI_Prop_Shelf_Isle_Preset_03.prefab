@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 416356}
   - component: {fileID: 3385638}
   - component: {fileID: 2376116}
+  - component: {fileID: 323323529308745335}
   m_Layer: 0
   m_Name: SI_Prop_Shelf_Isle_Preset_03
   m_TagString: Untagged
@@ -81,6 +82,19 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &323323529308745335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113656}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6.880696, y: 4.2769723, z: 3.4403481}
+  m_Center: {x: -3.440348, y: 2.1384861, z: -1.5825064}
 --- !u!1 &117066
 GameObject:
   m_ObjectHideFlags: 0

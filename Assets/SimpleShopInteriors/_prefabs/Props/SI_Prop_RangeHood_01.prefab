@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 412128}
   - component: {fileID: 3392524}
   - component: {fileID: 2395910}
+  - component: {fileID: -1614989752860248500}
   m_Layer: 0
   m_Name: SI_Prop_RangeHood_01
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &-1614989752860248500
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 123496}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.5633011, y: 2.0657208, z: 0.68601656}
+  m_Center: {x: 0, y: 3.0652804, z: 0.07650739}

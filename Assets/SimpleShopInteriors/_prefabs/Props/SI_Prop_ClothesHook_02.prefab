@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 482702}
   - component: {fileID: 3313928}
   - component: {fileID: 2365654}
+  - component: {fileID: 6408623229586768649}
   m_Layer: 0
   m_Name: SI_Prop_ClothesHook_02
   m_TagString: Untagged
@@ -79,3 +80,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &6408623229586768649
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 177848}
+  m_Material: {fileID: 13400000, guid: a50c76d159704034bb737a4641309fe2, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.49531138, y: 1.3830264, z: 0.26209825}
+  m_Center: {x: -0.013478637, y: -0.4675059, z: 0.13104913}
