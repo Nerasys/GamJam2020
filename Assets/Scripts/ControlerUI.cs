@@ -54,7 +54,7 @@ public class ControlerUI : MonoBehaviour
         timerCal += Time.deltaTime;
         timeSecond = (int)timerCal;
 
-        if (timeSecond > 60)
+        if (timeSecond > 59)
         {
             timeSecond -= 60;
             timerCal -= 60;

@@ -17,7 +17,7 @@ public class ItemsRamassable : MonoBehaviour
         cP = ControlerPlayer.GetInstance();
         dI = DataInfo.GetInstance();
         cP.OnRamassable += UpdateScore;
-        cP.OnRamassable += DestroyGameObject;
+     
 
 
     }
@@ -33,10 +33,7 @@ public class ItemsRamassable : MonoBehaviour
 
     }
 
-    void DestroyGameObject()
-    {
-        Destroy(gameObject);
-    }
+
 
 
 

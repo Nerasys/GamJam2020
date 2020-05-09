@@ -9,6 +9,7 @@ public class DataInfo : MonoBehaviour
     private static DataInfo instance;
 
     public int score;
+    public int scoreByItems = 10;
 
     [SerializeField]
     public float cancer;
