@@ -99,7 +99,7 @@ LightmapSettings:
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 4af93d544bb33fe4ea1583c7ee1d6c43,
     type: 2}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -11801,7 +11801,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.54901963, g: 0.54901963, b: 0.54901963, a: 0.2509804}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -19691,25 +19691,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1387028709}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1397850398 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2042968931366357545, guid: 086b1e6793250a444b735db421e550c9,
-    type: 3}
-  m_PrefabInstance: {fileID: 972460524}
-  m_PrefabAsset: {fileID: 0}
---- !u!65 &1397850399
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1397850398}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.8990577, y: 2.050744, z: 1}
-  m_Center: {x: 0.06478971, y: 1.0139875, z: 1.7763568e-15}
 --- !u!4 &1397850403 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2042968931366357557, guid: 086b1e6793250a444b735db421e550c9,
