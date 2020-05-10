@@ -23,6 +23,11 @@ public class Generation : MonoBehaviour
     int numberRoomC;
     int numberRoomD;
 
+    [SerializeField] GameObject player;
+
+
+    int spawnPlayer;
+
     DataInfo data;
 
     int indexRoomA;
@@ -59,6 +64,9 @@ public class Generation : MonoBehaviour
 
     void GenerationRoom()
     {
+
+
+        spawnPlayer = 0;
 
         wall1 = Random.Range(0, 3);
         wall2 = Random.Range(0, 3);
@@ -122,7 +130,39 @@ public class Generation : MonoBehaviour
                 roomD.transform.GetChild(6 + wall1).gameObject.SetActive(true);
                 break;
         }
+
+
+
+
+
+        switch (spawnPlayer)
+        {
+            case 0:
+                for(int i = 0; i < roomA.transform.childCount; i++)
+                {
+                    if (roomA.transform.GetChild(i).gameObject.activeSelf)
+                    {
+
+                        player.transform.position = roomA.transform.GetChild(i).Find("Spawn_Player").position;
+                        
+                    }
+                }
+                break;
+            case 1:
+                roomD.transform.GetChild(3 + wall1).gameObject.SetActive(true);
+                break;
+            case 2:
+                roomD.transform.GetChild(6 + wall1).gameObject.SetActive(true);
+                break;
+
+        }
+
+
+
+
+
     }
+
 
 
     private void Update()

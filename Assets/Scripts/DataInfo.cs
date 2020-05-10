@@ -12,7 +12,7 @@ public class DataInfo : MonoBehaviour
     public int numberObjectFalcu = 3;
 
     public int score;
-    
+    public bool death = false;
 
     [SerializeField]
     public float cancer;
@@ -41,6 +41,10 @@ public class DataInfo : MonoBehaviour
 
     [SerializeField]
     List<GameObject> prefabsCourse = new List<GameObject>();
+
+
+    [SerializeField]
+    GameObject canvasEndGame;
 
 
    public bool isGenerate = false;
@@ -102,7 +106,25 @@ public class DataInfo : MonoBehaviour
     }
 
 
+    void Death()
+    {
+        if (cancerMax <= cancer)
+        {
+            death = true;
+        }
 
+        if (death)
+        {
+
+            if (PlayerPrefs.GetInt("scoreMax") < score)
+            {
+                PlayerPrefs.SetInt("scoreMax", score);
+
+            }
+
+
+        }
+    }
 
 
 
