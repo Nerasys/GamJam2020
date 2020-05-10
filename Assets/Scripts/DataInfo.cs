@@ -8,7 +8,8 @@ public class DataInfo : MonoBehaviour
     // Start is called before the first frame update
 
     private static DataInfo instance;
-    public int level = 0;
+    public float level = 1;
+
     public int numberObjectInit = 3;
     public int numberObjectFalcu = 3;
 
@@ -19,6 +20,8 @@ public class DataInfo : MonoBehaviour
     public float cancer;
     [SerializeField]
     public float cancerMax;
+    [SerializeField]
+    public float multiplicator;
 
     [SerializeField]
     public float boost;
@@ -148,7 +151,7 @@ public class DataInfo : MonoBehaviour
     {
         if (cancer < cancerMax)
         {
-            cancer += Time.deltaTime * cancerBoost* level;
+            cancer += Time.deltaTime * cancerBoost* (level* multiplicator);
         }
     }
 
