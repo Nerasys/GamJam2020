@@ -199,6 +199,8 @@ public class Generation : MonoBehaviour
             data.timeMinute = 0;
             data.timerCal = 0;
             data.timeSecond = 0;
+            data.score = 0;
+            data.canvasEndGame.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
 
