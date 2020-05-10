@@ -196,6 +196,9 @@ public class Generation : MonoBehaviour
             data.indexGenerateB = 0;
             data.indexGenerateO= 0;
             data.timertemp = 0.0f;
+            data.timeMinute = 0;
+            data.timerCal = 0;
+            data.timeSecond = 0;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
 

@@ -15,7 +15,9 @@ public class DataInfo : MonoBehaviour
 
     public int score;
     public bool death = false;
-
+    public float timerCal = 0.0f;
+    public int timeSecond = 0;
+    public int timeMinute = 0;
     [SerializeField]
     public float cancer;
     [SerializeField]
