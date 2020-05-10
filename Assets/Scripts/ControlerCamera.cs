@@ -33,7 +33,7 @@ public class ControlerCamera : MonoBehaviour
     /// </summary>
     void Start()
     {
-        transform.position = new Vector3(player.position.x -5, transform.position.y, player.position.z);
+        transform.position = new Vector3(player.position.x -12, transform.position.y+15, player.position.z);
 
         startCameraXGap = this.transform.position.x - player.position.x;
         startCameraZGap = this.transform.position.z - player.position.z;

@@ -146,6 +146,7 @@ public class ControlerPlayer : MonoBehaviour
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * +rotateSpeed);
+             
             }
             else
             {
