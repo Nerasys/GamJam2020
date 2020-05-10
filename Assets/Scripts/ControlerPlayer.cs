@@ -98,11 +98,11 @@ public class ControlerPlayer : MonoBehaviour
             }
 
 
-              ParticleSystem.EmissionModule emission = fx1Z.GetComponent<ParticleSystem>().emission;
-              emission.enabled = true;
-              ParticleSystem.EmissionModule emission2 = fx2Z.GetComponent<ParticleSystem>().emission;
-              emission2.enabled = true;
-          
+            ParticleSystem.EmissionModule emission = fx1Z.GetComponent<ParticleSystem>().emission;
+            emission.enabled = true;
+            ParticleSystem.EmissionModule emission2 = fx2Z.GetComponent<ParticleSystem>().emission;
+            emission2.enabled = true;
+
         }
         else
         {
@@ -123,7 +123,7 @@ public class ControlerPlayer : MonoBehaviour
                 rb.AddForce(-gameObject.transform.forward * moveSpeed);
             }
         }
-        
+
         if (Input.GetKey(SteerLeft))
         {
 
@@ -136,7 +136,7 @@ public class ControlerPlayer : MonoBehaviour
             {
                 transform.Rotate(Vector3.up * -rotateSpeed);
             }
-            
+
         }
 
 
@@ -146,7 +146,7 @@ public class ControlerPlayer : MonoBehaviour
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * +rotateSpeed);
-             
+
             }
             else
             {
@@ -178,7 +178,7 @@ public class ControlerPlayer : MonoBehaviour
 
         if (isBoosted)
         {
-            
+
             if (timerBoost > timerFXboost)
             {
                 fxVitessBoost.SetActive(false);
@@ -196,36 +196,47 @@ public class ControlerPlayer : MonoBehaviour
     }
 
 
-        void OnLimit()
+    void OnLimit()
+    {
+        if (rb.velocity.x > limSpeedMax)
         {
-            if (rb.velocity.x > limSpeedMax)
-            {
-                rb.velocity = new Vector3(limSpeedMax, rb.velocity.y, rb.velocity.z);
-            }
-            if (rb.velocity.x < limSpeedMin)
-            {
-                rb.velocity = new Vector3(limSpeedMin, rb.velocity.y, rb.velocity.z);
-            }
-            if (rb.velocity.z > limSpeedMax)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMax);
-            }
-            if (rb.velocity.z < limSpeedMin)
-            {
-                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMin);
-            }
+            rb.velocity = new Vector3(limSpeedMax, rb.velocity.y, rb.velocity.z);
         }
+        if (rb.velocity.x < limSpeedMin)
+        {
+            rb.velocity = new Vector3(limSpeedMin, rb.velocity.y, rb.velocity.z);
+        }
+        if (rb.velocity.z > limSpeedMax)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMax);
+        }
+        if (rb.velocity.z < limSpeedMin)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, limSpeedMin);
+        }
+    }
 
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "Ramassable")
         {
-            if (other.gameObject.tag == "Ramassable")
+            FindObjectOfType<AudioManager>().Play("Confirm");
+            
+         
+            data.score += other.GetComponent<Items>().scoreGive;
+            for (int i = 0; i < data.myListItems.Count; i++)
             {
-                FindObjectOfType<AudioManager>().Play("Confirm");
-                Destroy(other.gameObject);
-                data.score += other.GetComponent<Items>().scoreGive;
+                if(data.myListItems[i].name.Contains(other.GetComponent<Items>().name))
+                {
+                    data.myListItems[i].GetComponent<Items>().isObligatoire = false;
+                }
             }
+
+            Destroy(other.gameObject);
+
         }
+    }
 
 }
 

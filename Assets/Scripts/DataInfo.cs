@@ -41,16 +41,18 @@ public class DataInfo : MonoBehaviour
     public List<GameObject> myListItems = new List<GameObject>();
 
     [SerializeField]
-    List<GameObject> prefabsCourse = new List<GameObject>();
+    public List<GameObject> prefabsCourse = new List<GameObject>();
 
-
+    [SerializeField] public GameObject canvasList;
+    public int indexGenerateO;
+    public int indexGenerateB;
     [SerializeField]
-    GameObject canvasEndGame;
+    public GameObject canvasEndGame;
 
 
     public bool isGenerate = false;
 
-
+    public float timertemp = 0.0f;
     public GameObject roomA;
     public GameObject roomB;
     public GameObject roomC;
@@ -64,6 +66,7 @@ public class DataInfo : MonoBehaviour
         if (instance == null)
         {
             instance = this;
+           
         }
         else
         {
@@ -71,6 +74,12 @@ public class DataInfo : MonoBehaviour
         }
 
         DontDestroyOnLoad(this.gameObject);
+        roomA = GameObject.Find("RNG_Room_A");
+        roomB = GameObject.Find("RNG_Room_B");
+        roomC = GameObject.Find("RNG_Room_C");
+        roomD = GameObject.Find("RNG_Room_D");
+        canvasEndGame = GameObject.Find("@CanvasEndGame");
+        canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
     }
 
     public static DataInfo GetInstance()
@@ -87,31 +96,39 @@ public class DataInfo : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!isGenerate)
+
+
+        if (timertemp > 1.0f)
         {
-
-            roomA = GameObject.Find("RNG_Room_A");
-            roomB = GameObject.Find("RNG_Room_B");
-            roomC = GameObject.Find("RNG_Room_C");
-            roomD = GameObject.Find("RNG_Room_D");
-
-            if (roomA && roomB && roomC && roomD)
+            if (!isGenerate)
             {
-                GenerateItems();
+
+
+
+                if (roomA && roomB && roomC && roomD)
+                {
+                    GenerateItems();
+                }
+                else
+                {
+                    roomA = GameObject.Find("RNG_Room_A");
+                    roomB = GameObject.Find("RNG_Room_B");
+                    roomC = GameObject.Find("RNG_Room_C");
+                    roomD = GameObject.Find("RNG_Room_D");
+                    canvasEndGame = GameObject.Find("@CanvasEndGame");
+                    canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
+                    GenerateItems();
+                }
+                isGenerate = true;
             }
-            else
-            {
-                roomA = GameObject.Find("RNG_Room_A");
-                roomB = GameObject.Find("RNG_Room_B");
-                roomC = GameObject.Find("RNG_Room_C");
-                roomD = GameObject.Find("RNG_Room_D");
-                GenerateItems();
-            }
-            isGenerate = true;
+            BoostRegen();
+            CancerRegen();
+            Death();
         }
-        BoostRegen();
-        CancerRegen();
-        Death();
+        else
+        {
+            timertemp += Time.deltaTime;
+        }
     }
 
 
@@ -141,7 +158,7 @@ public class DataInfo : MonoBehaviour
 
         if (death)
         {
-            canvasEndGame.SetActive(true);
+            canvasEndGame.transform.GetChild(0).gameObject.SetActive(true);
             if (PlayerPrefs.GetInt("scoreMax") < score)
             {
                 PlayerPrefs.SetInt("scoreMax", score);
@@ -170,7 +187,27 @@ public class DataInfo : MonoBehaviour
 
     void GenerateItems()
     {
+
         List<int> temp = new List<int>();
+        roomA = GameObject.Find("RNG_Room_A");
+        roomB = GameObject.Find("RNG_Room_B");
+        roomC = GameObject.Find("RNG_Room_C");
+        roomD = GameObject.Find("RNG_Room_D");
+        canvasEndGame = GameObject.Find("@CanvasEndGame");
+        canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
+
+
+        for (int j = 0; j < canvasList.transform.GetChild(3).childCount; j++)
+        {
+            canvasList.transform.GetChild(3).GetChild(j).gameObject.GetComponent<Text>().enabled =false;
+        }
+
+        for (int j = 0; j < canvasList.transform.GetChild(2).childCount; j++)
+        {
+
+            canvasList.transform.GetChild(2).GetChild(j).gameObject.GetComponent<Text>().enabled = false;
+        }
+
         int number;
         bool isGood;
         for (int i = 0; i < numberObjectInit; i++)
@@ -190,7 +227,14 @@ public class DataInfo : MonoBehaviour
             } while (isGood == false);
             temp.Add(number);
             prefabsCourse[number].GetComponent<Items>().isObligatoire = true;
+        
+            canvasList.transform.GetChild(2).GetChild(indexGenerateO).gameObject.GetComponent<Text>().enabled = true;
+            canvasList.transform.GetChild(2).GetChild(indexGenerateO).GetComponent<Text>().text = "-" + prefabsCourse[number].GetComponent<Items>().name;
+            indexGenerateO++;
+
+
             myListItems.Add(prefabsCourse[number]);
+
 
 
         }
@@ -211,7 +255,10 @@ public class DataInfo : MonoBehaviour
             } while (isGood == false);
             temp.Add(number);
             prefabsCourse[number].GetComponent<Items>().isObligatoire = false;
-            myListItems.Add(prefabsCourse[number]);
+            canvasList.transform.GetChild(3).GetChild(indexGenerateB).gameObject.GetComponent<Text>().enabled = true; 
+            canvasList.transform.GetChild(3).GetChild(indexGenerateB).GetComponent<Text>().text = "-" + prefabsCourse[number].GetComponent<Items>().name;
+            indexGenerateB++;
+            myListItems.Add(prefabsCourse[number]); 
         }
         
         for (int i = 0; i < myListItems.Count; i++)
@@ -249,6 +296,7 @@ public class DataInfo : MonoBehaviour
                          if (roomA.transform.GetChild(k).gameObject.activeSelf)
                          {
                             item = Instantiate(myListItems[i],roomA.transform.GetChild(i).Find("Spawn_Item_"+ spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            item.gameObject.name = myListItems[i].name;
                          }
                      }
                     break;
@@ -258,6 +306,7 @@ public class DataInfo : MonoBehaviour
                         if (roomB.transform.GetChild(k).gameObject.activeSelf)
                         {
                             item = Instantiate(myListItems[i], roomB.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            item.gameObject.name = myListItems[i].name;
                         }
                     }
                     break;
@@ -267,6 +316,7 @@ public class DataInfo : MonoBehaviour
                         if (roomC.transform.GetChild(k).gameObject.activeSelf)
                         {
                             item = Instantiate(myListItems[i], roomC.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            item.gameObject.name = myListItems[i].name;
                         }
                     }
                     break;
@@ -276,6 +326,7 @@ public class DataInfo : MonoBehaviour
                         if (roomD.transform.GetChild(k).gameObject.activeSelf)
                         {
                             item = Instantiate(myListItems[i], roomD.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            item.gameObject.name = myListItems[i].name;
                         }
                     }
                     break;
