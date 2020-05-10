@@ -119,17 +119,31 @@ public class ControlerPlayer : MonoBehaviour
                 rb.AddForce(-gameObject.transform.forward * moveSpeed);
             }
         }
-
-
+        
         if (Input.GetKey(SteerLeft))
         {
-            transform.Rotate(Vector3.up * -rotateSpeed);
+            if(useRelativeForce)
+            {
+                rb.AddTorque(Vector3.up * -rotateSpeed);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up * -rotateSpeed);
+            }
+            
         }
 
 
         if (Input.GetKey(SteerRight))
         {
-            transform.Rotate(Vector3.up * +rotateSpeed);
+            if (useRelativeForce)
+            {
+                rb.AddTorque(Vector3.up * +rotateSpeed);
+            }
+            else
+            {
+                transform.Rotate(Vector3.up * +rotateSpeed);
+            }
         }
 
 
@@ -199,7 +213,7 @@ public class ControlerPlayer : MonoBehaviour
             if (other.gameObject.tag == "Ramassable")
             {
                 Destroy(other.gameObject);
-                data.score += data.scoreByItems;
+                data.score += other.GetComponent<Items>().scoreGive;
             }
         }
 

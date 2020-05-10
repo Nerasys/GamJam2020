@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3972299296996610623}
   - component: {fileID: 6701780216445617501}
   m_Layer: 0
-  m_Name: ToiletPaper
+  m_Name: PQ
   m_TagString: Ramassable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,4 +108,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isObligatoire: 1
   myName: Toilet paper
-  scoreGive: 500
+  scoreGive: 45
