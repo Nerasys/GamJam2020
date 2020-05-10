@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ControlerPlayer : MonoBehaviour
 {
@@ -222,9 +223,32 @@ public class ControlerPlayer : MonoBehaviour
         if (other.gameObject.tag == "Ramassable")
         {
             FindObjectOfType<AudioManager>().Play("Confirm");
-            
-         
-            data.score += other.GetComponent<Items>().scoreGive;
+
+            if (other.gameObject.GetComponent<Items>().isObligatoire)
+            {
+                for (int i = 0; i < data.canvasList.transform.GetChild(2).childCount; i++)
+                {
+                    if(data.canvasList.transform.GetChild(2).GetChild(i).gameObject.GetComponent<Text>().text.Contains(other.name))
+                    {
+                        data.canvasList.transform.GetChild(2).GetChild(i).gameObject.GetComponent<Text>().enabled = false;
+                    }
+                }
+
+            }
+            else
+            {
+                for (int i = 0; i < data.canvasList.transform.GetChild(3).childCount; i++)
+                {
+                    if (data.canvasList.transform.GetChild(3).GetChild(i).gameObject.GetComponent<Text>().text.Contains(other.name))
+                    {
+                        data.canvasList.transform.GetChild(3).GetChild(i).gameObject.GetComponent<Text>().enabled = false;
+                    }
+                }
+            }
+
+
+
+                data.score += other.GetComponent<Items>().scoreGive;
             for (int i = 0; i < data.myListItems.Count; i++)
             {
                 if(data.myListItems[i].name.Contains(other.GetComponent<Items>().name))
@@ -232,6 +256,8 @@ public class ControlerPlayer : MonoBehaviour
                     data.myListItems[i].GetComponent<Items>().isObligatoire = false;
                 }
             }
+
+           
 
             Destroy(other.gameObject);
 

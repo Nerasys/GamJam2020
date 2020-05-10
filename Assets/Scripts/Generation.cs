@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class Generation : MonoBehaviour
@@ -131,10 +132,6 @@ public class Generation : MonoBehaviour
                 break;
         }
 
-
-
-
-
         switch (spawnPlayer)
         {
             case 0:
@@ -199,6 +196,11 @@ public class Generation : MonoBehaviour
             data.indexGenerateB = 0;
             data.indexGenerateO= 0;
             data.timertemp = 0.0f;
+            data.timeMinute = 0;
+            data.timerCal = 0;
+            data.timeSecond = 0;
+            data.score = 0;
+            data.canvasEndGame.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
 

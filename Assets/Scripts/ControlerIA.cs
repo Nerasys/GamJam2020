@@ -15,6 +15,7 @@ public class ControlerIA : MonoBehaviour
     {
         nMA = GetComponent<NavMeshAgent>();
         dI = DataInfo.GetInstance();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
