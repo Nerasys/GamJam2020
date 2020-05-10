@@ -149,18 +149,40 @@ public class Generation : MonoBehaviour
                 }
                 break;
             case 1:
-                roomD.transform.GetChild(3 + wall1).gameObject.SetActive(true);
+                for (int i = 0; i < roomB.transform.childCount; i++)
+                {
+                    if (roomB.transform.GetChild(i).gameObject.activeSelf)
+                    {
+
+                        player.transform.position = roomB.transform.GetChild(i).Find("Spawn_Player").position;
+
+                    }
+                }
                 break;
             case 2:
-                roomD.transform.GetChild(6 + wall1).gameObject.SetActive(true);
+                for (int i = 0; i < roomC.transform.childCount; i++)
+                {
+                    if (roomC.transform.GetChild(i).gameObject.activeSelf)
+                    {
+
+                        player.transform.position = roomC.transform.GetChild(i).Find("Spawn_Player").position;
+
+                    }
+                }
+                break;
+            case 3:
+                for (int i = 0; i < roomD.transform.childCount; i++)
+                {
+                    if (roomD.transform.GetChild(i).gameObject.activeSelf)
+                    {
+
+                        player.transform.position = roomD.transform.GetChild(i).Find("Spawn_Player").position;
+
+                    }
+                }
                 break;
 
         }
-
-
-
-
-
     }
 
 

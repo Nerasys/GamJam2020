@@ -18,7 +18,7 @@ public class DataInfo : MonoBehaviour
     public float cancer;
     [SerializeField]
     public float cancerMax;
-   
+
     [SerializeField]
     public float boost;
     [SerializeField]
@@ -47,7 +47,15 @@ public class DataInfo : MonoBehaviour
     GameObject canvasEndGame;
 
 
-   public bool isGenerate = false;
+    public bool isGenerate = false;
+
+
+    public GameObject roomA;
+    public GameObject roomB;
+    public GameObject roomC;
+    public GameObject roomD;
+
+    GameObject item;
 
     private void Awake()
     {
@@ -60,7 +68,7 @@ public class DataInfo : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        
+
         DontDestroyOnLoad(this.gameObject);
     }
 
@@ -72,7 +80,7 @@ public class DataInfo : MonoBehaviour
 
     void Start()
     {
-       
+
     }
 
     // Update is called once per frame
@@ -91,7 +99,7 @@ public class DataInfo : MonoBehaviour
 
     void BoostRegen()
     {
-        if(boost < boostMax)
+        if (boost < boostMax)
         {
             boost += Time.deltaTime * regenBoost;
         }
@@ -101,7 +109,7 @@ public class DataInfo : MonoBehaviour
     {
         if (cancer < cancerMax)
         {
-            cancer += Time.deltaTime * cancerBoost ;
+            cancer += Time.deltaTime * cancerBoost;
         }
     }
 
@@ -126,6 +134,14 @@ public class DataInfo : MonoBehaviour
         }
     }
 
+    struct SpawnItem
+    {
+        public int room;
+        public int spawn;
+
+    }
+
+
 
 
     void GenerateItems()
@@ -133,9 +149,9 @@ public class DataInfo : MonoBehaviour
         List<int> temp = new List<int>();
         int number;
         bool isGood;
-        for (int i = 0; i < numberObjectInit + level; i++)
+        for (int i = 0; i < numberObjectInit; i++)
         {
-      
+
             do
             {
                 isGood = true;
@@ -154,29 +170,99 @@ public class DataInfo : MonoBehaviour
 
 
         }
-           for (int i = 0; i < numberObjectFalcu + level; i++)
-           {
-               isGood = true;
-               do
-               {
-                   isGood = true;
-                   number = Random.Range(0, prefabsCourse.Count);
-                   for (int j = 0; j < temp.Count; j++)
-                   {
-                       if (number == temp[j])
-                       {
-                           isGood = false;
-                       }
-                   }
-               } while (isGood == false);
-               temp.Add(number);
-               prefabsCourse[number].GetComponent<Items>().isObligatoire = false;
-               myListItems.Add(prefabsCourse[number]);
-             
-           }
+        for (int i = 0; i < numberObjectFalcu; i++)
+        {
+            isGood = true;
+            do
+            {
+                isGood = true;
+                number = Random.Range(0, prefabsCourse.Count);
+                for (int j = 0; j < temp.Count; j++)
+                {
+                    if (number == temp[j])
+                    {
+                        isGood = false;
+                    }
+                }
+            } while (isGood == false);
+            temp.Add(number);
+            prefabsCourse[number].GetComponent<Items>().isObligatoire = false;
+            myListItems.Add(prefabsCourse[number]);
+
+        }
+
+        Debug.Log(myListItems.Count);
+        for (int i = 0; i < myListItems.Count; i++)
+        {
+            List<SpawnItem> tempSpawn = new List<SpawnItem>();
+            bool isGood2;
+            SpawnItem spawn = new SpawnItem();
+            do
+            {
+                isGood2 = true;
+                int randomRoom = Random.Range(0, 4);
+                int randomItemsSpawn = Random.Range(1, 11);
+                spawn.room = randomRoom;
+                spawn.spawn = randomItemsSpawn;
+
+                for (int j = 0; j < tempSpawn.Count; j++)
+                {
+                    if (spawn.room == tempSpawn[j].room)
+                    {
+                        if (spawn.spawn == tempSpawn[j].spawn)
+                        {
+                            isGood2 = false;
+                        }
+                    }
+                }
 
 
+            } while (!isGood2);
 
-    
+           switch (spawn.room)
+            {
+                 case 0:
+                     for (int k = 0; k< roomA.transform.childCount; k++)
+                     {
+                         if (roomA.transform.GetChild(k).gameObject.activeSelf)
+                         {
+                            item = Instantiate(myListItems[i],roomA.transform.GetChild(i).Find("Spawn_Item_"+ spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                         }
+                     }
+                    break;
+                 case 1:
+                    for (int k = 0; k < roomB.transform.childCount; k++)
+                    {
+                        if (roomB.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            item = Instantiate(myListItems[i], roomB.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                        }
+                    }
+                    break;
+                case 2:
+                    for (int k = 0; k < roomC.transform.childCount; k++)
+                    {
+                        if (roomC.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            item = Instantiate(myListItems[i], roomC.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int k = 0; k < roomD.transform.childCount; k++)
+                    {
+                        if (roomD.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            item = Instantiate(myListItems[i], roomD.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                        }
+                    }
+                    break;
+
+
+            }
+        }
+
+
     }
+   
 }
