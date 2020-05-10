@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.SceneManagement;
 
 public class Generation : MonoBehaviour
@@ -130,10 +131,6 @@ public class Generation : MonoBehaviour
                 roomD.transform.GetChild(6 + wall1).gameObject.SetActive(true);
                 break;
         }
-
-
-
-
 
         switch (spawnPlayer)
         {

@@ -43,6 +43,10 @@ public class DataInfo : MonoBehaviour
     [SerializeField]
     public List<GameObject> prefabsCourse = new List<GameObject>();
 
+
+    [SerializeField]
+    public GameObject prefabsPNJ;
+
     [SerializeField] public GameObject canvasList;
     public int indexGenerateO;
     public int indexGenerateB;
@@ -59,7 +63,7 @@ public class DataInfo : MonoBehaviour
     public GameObject roomD;
 
     GameObject item;
-
+    GameObject pnj;
     private void Awake()
     {
 
@@ -287,20 +291,20 @@ public class DataInfo : MonoBehaviour
 
 
             } while (!isGood2);
-
-           switch (spawn.room)
+            tempSpawn.Add(spawn);
+            switch (spawn.room)
             {
-                 case 0:
-                     for (int k = 0; k< roomA.transform.childCount; k++)
-                     {
-                         if (roomA.transform.GetChild(k).gameObject.activeSelf)
-                         {
-                            item = Instantiate(myListItems[i],roomA.transform.GetChild(i).Find("Spawn_Item_"+ spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                case 0:
+                    for (int k = 0; k < roomA.transform.childCount; k++)
+                    {
+                        if (roomA.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            item = Instantiate(myListItems[i], roomA.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
                             item.gameObject.name = myListItems[i].name;
-                         }
-                     }
+                        }
+                    }
                     break;
-                 case 1:
+                case 1:
                     for (int k = 0; k < roomB.transform.childCount; k++)
                     {
                         if (roomB.transform.GetChild(k).gameObject.activeSelf)
@@ -333,8 +337,8 @@ public class DataInfo : MonoBehaviour
 
 
             }
-        }
 
+        }
 
     }
    
