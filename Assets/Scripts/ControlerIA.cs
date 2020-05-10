@@ -31,6 +31,7 @@ public class ControlerIA : MonoBehaviour
 
     public void Degats(float dgt)
     {
+        FindObjectOfType<AudioManager>().Play("TouxH1");
         dI.cancer += dgt;
     }
 }

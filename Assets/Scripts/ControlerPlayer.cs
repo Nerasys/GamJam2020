@@ -56,6 +56,8 @@ public class ControlerPlayer : MonoBehaviour
         {
             Destroy(this);
         }
+
+        FindObjectOfType<AudioManager>().Play("LevelBegin");
     }
 
     public static ControlerPlayer GetInstance()
@@ -82,8 +84,10 @@ public class ControlerPlayer : MonoBehaviour
 
     void OnDrive()
     {
+        FindObjectOfType<AudioManager>().Play("BoucleRoue");
         if (Input.GetKey(Accelerate))
         {
+
             if (useRelativeForce)
             {
                 rb.AddRelativeForce(Vector3.forward * moveSpeed);
@@ -122,7 +126,9 @@ public class ControlerPlayer : MonoBehaviour
         
         if (Input.GetKey(SteerLeft))
         {
-            if(useRelativeForce)
+
+            FindObjectOfType<AudioManager>().Play("BoucleThrust");
+            if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * -rotateSpeed);
             }
@@ -136,6 +142,7 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKey(SteerRight))
         {
+            FindObjectOfType<AudioManager>().Play("Drift");
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * +rotateSpeed);
@@ -149,6 +156,7 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKeyDown(Boost))
         {
+            FindObjectOfType<AudioManager>().Play("Drift");
             if (data.boost == data.boostMax)
             {
                 if (useRelativeForce)
@@ -159,7 +167,7 @@ public class ControlerPlayer : MonoBehaviour
                 {
                     rb.AddForce(gameObject.transform.forward * moveSpeed * moveBoost);
                 }
-                
+                FindObjectOfType<AudioManager>().Play("Thrust");
                 data.boost = 0.0f;
                 isBoosted = true;
 
@@ -169,7 +177,7 @@ public class ControlerPlayer : MonoBehaviour
 
         if (isBoosted)
         {
-
+            
             if (timerBoost > timerFXboost)
             {
                 fxVitessBoost.SetActive(false);
@@ -212,6 +220,7 @@ public class ControlerPlayer : MonoBehaviour
         {
             if (other.gameObject.tag == "Ramassable")
             {
+                FindObjectOfType<AudioManager>().Play("Confirm");
                 Destroy(other.gameObject);
                 data.score += other.GetComponent<Items>().scoreGive;
             }
