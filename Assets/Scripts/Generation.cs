@@ -194,6 +194,8 @@ public class Generation : MonoBehaviour
             data.level++;
             data.myListItems.Clear();
             data.isGenerate = false;
+            data.cancer = 0.0f;
+            data.boost = 0.0f;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         
 

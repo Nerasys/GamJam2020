@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class DataInfo : MonoBehaviour
 {
@@ -88,12 +89,29 @@ public class DataInfo : MonoBehaviour
     {
         if (!isGenerate)
         {
-            GenerateItems();
-            Debug.Log(level);
+
+            roomA = GameObject.Find("RNG_Room_A");
+            roomB = GameObject.Find("RNG_Room_B");
+            roomC = GameObject.Find("RNG_Room_C");
+            roomD = GameObject.Find("RNG_Room_D");
+
+            if (roomA && roomB && roomC && roomD)
+            {
+                GenerateItems();
+            }
+            else
+            {
+                roomA = GameObject.Find("RNG_Room_A");
+                roomB = GameObject.Find("RNG_Room_B");
+                roomC = GameObject.Find("RNG_Room_C");
+                roomD = GameObject.Find("RNG_Room_D");
+                GenerateItems();
+            }
             isGenerate = true;
         }
         BoostRegen();
         CancerRegen();
+        Death();
     }
 
 
@@ -109,7 +127,7 @@ public class DataInfo : MonoBehaviour
     {
         if (cancer < cancerMax)
         {
-            cancer += Time.deltaTime * cancerBoost;
+            cancer += Time.deltaTime * cancerBoost* level;
         }
     }
 
@@ -123,11 +141,17 @@ public class DataInfo : MonoBehaviour
 
         if (death)
         {
-
+            canvasEndGame.SetActive(true);
             if (PlayerPrefs.GetInt("scoreMax") < score)
             {
                 PlayerPrefs.SetInt("scoreMax", score);
-
+                canvasEndGame.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = score.ToString();
+                canvasEndGame.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = score.ToString();
+            }
+            else
+            {
+                canvasEndGame.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = PlayerPrefs.GetInt("scoreMax").ToString();
+                canvasEndGame.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = score.ToString();
             }
 
 
@@ -188,10 +212,8 @@ public class DataInfo : MonoBehaviour
             temp.Add(number);
             prefabsCourse[number].GetComponent<Items>().isObligatoire = false;
             myListItems.Add(prefabsCourse[number]);
-
         }
-
-        Debug.Log(myListItems.Count);
+        
         for (int i = 0; i < myListItems.Count; i++)
         {
             List<SpawnItem> tempSpawn = new List<SpawnItem>();
