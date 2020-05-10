@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ControlerPlayer : MonoBehaviour
 {
+
+    private AudioManager michel;
+
     // Start is called before the first frame update
     private static ControlerPlayer instance;
 
@@ -58,7 +61,11 @@ public class ControlerPlayer : MonoBehaviour
             Destroy(this);
         }
 
-        FindObjectOfType<AudioManager>().Play("LevelBegin");
+        if(michel == null)
+        {
+            michel = FindObjectOfType<AudioManager>();
+        }
+        michel.Play("LevelBegin");
     }
 
     public static ControlerPlayer GetInstance()
@@ -85,7 +92,7 @@ public class ControlerPlayer : MonoBehaviour
 
     void OnDrive()
     {
-        FindObjectOfType<AudioManager>().Play("BoucleRoue");
+        michel.Play("BoucleRoue");
         if (Input.GetKey(Accelerate))
         {
 
@@ -128,7 +135,7 @@ public class ControlerPlayer : MonoBehaviour
         if (Input.GetKey(SteerLeft))
         {
 
-            FindObjectOfType<AudioManager>().Play("BoucleThrust");
+            michel.Play("BoucleThrust");
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * -rotateSpeed * Time.deltaTime);
@@ -143,7 +150,7 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKey(SteerRight))
         {
-            FindObjectOfType<AudioManager>().Play("Drift");
+            michel.Play("Drift");
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * +rotateSpeed * Time.deltaTime);
@@ -158,7 +165,7 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKeyDown(Boost))
         {
-            FindObjectOfType<AudioManager>().Play("Drift");
+            michel.Play("Drift");
             if (data.boost == data.boostMax)
             {
                 if (useRelativeForce)
@@ -222,7 +229,7 @@ public class ControlerPlayer : MonoBehaviour
     {
         if (other.gameObject.tag == "Ramassable")
         {
-            FindObjectOfType<AudioManager>().Play("Confirm");
+            michel.Play("Confirm");
 
             if (other.gameObject.GetComponent<Items>().isObligatoire)
             {
