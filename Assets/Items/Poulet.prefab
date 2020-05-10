@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3972299296996610623}
   - component: {fileID: 6701780216445617501}
   m_Layer: 0
-  m_Name: Item 1
+  m_Name: Poulet
   m_TagString: Ramassable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,5 +107,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isObligatoire: 0
-  myName: 
-  scoreGive: 0
+  myName: Chicken
+  scoreGive: 30

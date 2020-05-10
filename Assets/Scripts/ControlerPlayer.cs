@@ -199,7 +199,7 @@ public class ControlerPlayer : MonoBehaviour
             if (other.gameObject.tag == "Ramassable")
             {
                 Destroy(other.gameObject);
-                data.score += data.scoreByItems;
+                data.score += other.GetComponent<Items>().scoreGive;
             }
         }
 

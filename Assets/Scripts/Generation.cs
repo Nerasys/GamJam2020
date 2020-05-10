@@ -23,7 +23,7 @@ public class Generation : MonoBehaviour
     int numberRoomC;
     int numberRoomD;
 
-
+    DataInfo data;
 
     int indexRoomA;
 
@@ -43,6 +43,7 @@ public class Generation : MonoBehaviour
 
     public static Generation GetInstance()
     {
+
         return instance;
     }
     // Update is called once per frame
@@ -51,6 +52,7 @@ public class Generation : MonoBehaviour
 
     private void Start()
     {
+        data = DataInfo.GetInstance();
         GenerationRoom();
     }
 
@@ -127,7 +129,11 @@ public class Generation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            data.level++;
+            data.myListItems.Clear();
+            data.isGenerate = false;
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        
 
         }
     }
