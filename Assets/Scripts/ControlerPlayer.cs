@@ -91,7 +91,7 @@ public class ControlerPlayer : MonoBehaviour
 
             if (useRelativeForce)
             {
-                rb.AddRelativeForce(Vector3.forward * moveSpeed);
+                rb.AddRelativeForce(Vector3.forward * moveSpeed * Time.deltaTime);
             }
             else
             {
@@ -117,7 +117,7 @@ public class ControlerPlayer : MonoBehaviour
         {
             if (useRelativeForce)
             {
-                rb.AddRelativeForce(-Vector3.forward * moveSpeed);
+                rb.AddRelativeForce(-Vector3.forward * moveSpeed* Time.deltaTime);
             }
             else
             {
@@ -131,7 +131,7 @@ public class ControlerPlayer : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("BoucleThrust");
             if (useRelativeForce)
             {
-                rb.AddTorque(Vector3.up * -rotateSpeed);
+                rb.AddTorque(Vector3.up * -rotateSpeed * Time.deltaTime);
             }
             else
             {
@@ -146,7 +146,7 @@ public class ControlerPlayer : MonoBehaviour
             FindObjectOfType<AudioManager>().Play("Drift");
             if (useRelativeForce)
             {
-                rb.AddTorque(Vector3.up * +rotateSpeed);
+                rb.AddTorque(Vector3.up * +rotateSpeed * Time.deltaTime);
 
             }
             else
