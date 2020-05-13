@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 3355012}
   - component: {fileID: 2373126}
   - component: {fileID: 3014068350973756019}
+  - component: {fileID: 1453598662}
   m_Layer: 0
   m_Name: SI_Prop_Shelf_Freezer_Preset_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &495466
 Transform:
@@ -93,3 +94,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 7.87928, y: 4.5861464, z: 2.110424}
   m_Center: {x: -3.9091568, y: 2.2930732, z: -0.8913746}
+--- !u!208 &1453598662
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 119374}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.9400003, y: 2.2930002, z: 1.0550001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.9090002, y: 2.2930002, z: -0.89100003}
+  m_TimeToStationary: 0.5

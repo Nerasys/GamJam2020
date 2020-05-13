@@ -7,42 +7,44 @@ public class ControlerPlayer : MonoBehaviour
 {
 
     private AudioManager michel;
-
     // Start is called before the first frame update
     private static ControlerPlayer instance;
 
     DataInfo data;
-    public System.Action OnRamassable;
 
-    //Movement Information
+    [Header("Physics")]
+
     public float moveSpeed = 10.0f;
     public float moveBoost = 10.0f;
     public float rotateSpeed = 0.5f;
+    public bool useRelativeForce = true;
 
+    [Header("Touche")]
 
-    //Controls
     public KeyCode Accelerate = KeyCode.Z;
     public KeyCode Decelerate = KeyCode.S;
     public KeyCode SteerLeft = KeyCode.Q;
     public KeyCode SteerRight = KeyCode.D;
-
     public KeyCode Accelerate2 = KeyCode.UpArrow;
     public KeyCode Decelerate2 = KeyCode.DownArrow;
     public KeyCode SteerLeft2 = KeyCode.LeftArrow;
     public KeyCode SteerRight2 = KeyCode.RightArrow;
-
     public KeyCode Boost = KeyCode.Space;
-    public bool useRelativeForce = true;
+
+
 
     //Movement Limit
+    [Header("Limits et Timer")]
 
     public float limSpeedMin = -20.0f;
     public float limSpeedMax = 20.0f;
-
     public float timerFXboost = 2.0f;
     private float timerBoost = 0.0f;
     bool isBoosted = false;
     //Movemement 
+
+    [Header ("FX")]
+
     [SerializeField]
     public GameObject fx1Z;
     [SerializeField]
@@ -50,9 +52,9 @@ public class ControlerPlayer : MonoBehaviour
     [SerializeField]
     public GameObject fxVitessBoost;
 
+    [Header("PAS TOUCH")]
 
     Rigidbody rb;
-
     DataDontDestroy dtn;
     // Use this for initialization
 

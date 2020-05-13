@@ -40,12 +40,10 @@ public class Ascenceur : MonoBehaviour
             {
                 dtn.level++;
                 data.myListItems.Clear();
-                data.isGenerate = false;
                 data.cancer = 0.0f;
                 data.boost = 0.0f;
                 data.indexGenerateB = 0;
                 data.indexGenerateO = 0;
-                data.timertemp = 0.0f;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
                
 

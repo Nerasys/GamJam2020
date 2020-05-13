@@ -13,44 +13,37 @@ public class DataInfo : MonoBehaviour
 
     public bool death = false;
 
-    [SerializeField]
-    public float cancer;
-    [SerializeField]
-    public float cancerMax;
 
-    [SerializeField]
-    public float multiplicator;
+   
+
+    [Header("Gestion Boost")]
     [SerializeField]
     public float boost;
     [SerializeField]
     public float boostMax;
+    [SerializeField]
+    public float regenBoost;
 
+
+    [Header("Gestion Damage")]
+    [SerializeField]
+    public float cancer;
+    [SerializeField]
+    public float cancerMax;
     [SerializeField]
     public float cancerBoost;
     [SerializeField]
-    public float regenBoost;
-    [SerializeField]
-    public float DegatsIA;
-    [SerializeField]
-    public float DistanceDegatsIA;
+    public float multiplicatorWithLevel;
 
-    [SerializeField]
-    public List<GameObject> myListItems = new List<GameObject>();
 
-    [SerializeField]
-    public List<GameObject> prefabsCourse = new List<GameObject>();
+    [Header ("Gestion PNJ")]
+    public float acceptanceArretPNJDestination = 2.0f;
+    public float cancerNPCDamanage =0.5f;
+    public float acceptancePlayerWithDamage = 2.0f;
+    public int minPnj = 1;
+    public int maxPnj = 5;
 
-    [SerializeField]
-    public GameObject prefabsPNJ;
-    [SerializeField] public GameObject canvasList;
-    public int indexGenerateO;
-    public int indexGenerateB;
-    [SerializeField]
-    public GameObject canvasEndGame;
-
-    public bool isGenerate = false;
-
-    public float timertemp = 0.0f;
+    [Header("Pas Touche")]
     public GameObject roomA;
     public GameObject roomB;
     public GameObject roomC;
@@ -58,6 +51,18 @@ public class DataInfo : MonoBehaviour
     public GameObject items;
     GameObject item;
     GameObject pnj;
+    public GameObject[] prefabsPnj;
+    [SerializeField]
+    public GameObject canvasEndGame;
+    [SerializeField] public GameObject canvasList;
+    public int indexGenerateO;
+    public int indexGenerateB;
+    [SerializeField]
+    public List<GameObject> myListItems = new List<GameObject>();
+
+    [SerializeField]
+    public List<GameObject> prefabsCourse = new List<GameObject>();
+
     private void Awake()
     {
 
@@ -91,6 +96,7 @@ public class DataInfo : MonoBehaviour
         canvasEndGame = GameObject.Find("@CanvasEndGame");
         canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
         GenerateItems();
+        GeneratePNJ();
     }
 
     // Update is called once per frame
@@ -116,7 +122,7 @@ public class DataInfo : MonoBehaviour
     {
         if (cancer < cancerMax)
         {
-            cancer += Time.deltaTime * cancerBoost * (dataDontDestroy.level * multiplicator);
+            cancer += Time.deltaTime * cancerBoost * (dataDontDestroy.level * multiplicatorWithLevel);
         }
     }
 
@@ -147,7 +153,7 @@ public class DataInfo : MonoBehaviour
         }
     }
 
-    struct SpawnItem
+    public struct SpawnItem
     {
         public int room;
         public int spawn;
@@ -309,6 +315,97 @@ public class DataInfo : MonoBehaviour
                             item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
+
+                        }
+                    }
+                    break;
+
+
+            }
+
+        }
+
+    }
+
+
+
+    [SerializeField] GameObject PNJ;
+
+    void GeneratePNJ()
+    {
+
+
+        for (int i = 0; i < Random.Range(minPnj, maxPnj+1); i++)
+        {
+            List<SpawnItem> tempSpawn = new List<SpawnItem>();
+            bool isGood;
+            SpawnItem spawn = new SpawnItem();
+            do
+            {
+                isGood = true;
+                int randomRoom = Random.Range(0, 4);
+                int randomItemsSpawn = Random.Range(1, 11);
+                spawn.room = randomRoom;
+                spawn.spawn = randomItemsSpawn;
+
+                for (int j = 0; j < tempSpawn.Count; j++)
+                {
+                    if (spawn.room == tempSpawn[j].room)
+                    {
+                        if (spawn.spawn == tempSpawn[j].spawn)
+                        {
+                            isGood = false;
+                        }
+                    }
+                }
+            } while (!isGood);
+            tempSpawn.Add(spawn);
+
+            switch (spawn.room)
+            {
+                case 0:
+                    for (int k = 0; k < roomA.transform.childCount; k++)
+                    {
+                        if (roomA.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            Vector3 positionItems = roomA.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            pnj = Instantiate(prefabsPnj[Random.Range(0, prefabsPnj.Length)], positionItems, Quaternion.identity);
+                            pnj.transform.parent = PNJ.transform;
+
+                        }
+                    }
+                    break;
+                case 1:
+                    for (int k = 0; k < roomB.transform.childCount; k++)
+                    {
+                        if (roomB.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            Vector3 positionItems = roomB.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            pnj = Instantiate(prefabsPnj[Random.Range(0, prefabsPnj.Length)], positionItems, Quaternion.identity);
+                            pnj.transform.parent = PNJ.transform;
+
+                        }
+                    }
+                    break;
+                case 2:
+                    for (int k = 0; k < roomC.transform.childCount; k++)
+                    {
+                        if (roomC.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            Vector3 positionItems = roomC.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            pnj = Instantiate(prefabsPnj[Random.Range(0, prefabsPnj.Length)], positionItems, Quaternion.identity);
+                            pnj.transform.parent = PNJ.transform;
+                        }
+                    }
+                    break;
+                case 3:
+                    for (int k = 0; k < roomD.transform.childCount; k++)
+                    {
+                        if (roomD.transform.GetChild(k).gameObject.activeSelf)
+                        {
+                            Vector3 positionItems = roomD.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            pnj = Instantiate(prefabsPnj[Random.Range(0, prefabsPnj.Length)], positionItems, Quaternion.identity);
+                            pnj.transform.parent = PNJ.transform;
 
                         }
                     }

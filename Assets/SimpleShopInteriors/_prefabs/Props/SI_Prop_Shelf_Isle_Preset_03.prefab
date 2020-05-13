@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 3385638}
   - component: {fileID: 2376116}
   - component: {fileID: 323323529308745335}
+  - component: {fileID: 1860292205}
   m_Layer: 0
   m_Name: SI_Prop_Shelf_Isle_Preset_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &416356
 Transform:
@@ -95,6 +96,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.880696, y: 4.2769723, z: 3.4403481}
   m_Center: {x: -3.440348, y: 2.1384861, z: -1.5825064}
+--- !u!208 &1860292205
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 113656}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 3.44, y: 2.138, z: 1.72}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -3.44, y: 2.138, z: -1.5830001}
+  m_TimeToStationary: 0.5
 --- !u!1 &117066
 GameObject:
   m_ObjectHideFlags: 0
@@ -111,7 +128,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &431282
 Transform:
@@ -190,7 +207,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &418702
 Transform:

@@ -191,12 +191,10 @@ public class Generation : MonoBehaviour
         {
 
             data.myListItems.Clear();
-            data.isGenerate = false;
             data.cancer = 0.0f;
             data.boost = 0.0f;
             data.indexGenerateB = 0;
             data.indexGenerateO = 0;
-            data.timertemp = 0.0f;
             dtn.timeMinute = 0;
             dtn.timerCal = 0;
             dtn.timeSecond = 0;
@@ -219,7 +217,21 @@ public class Generation : MonoBehaviour
 
         }
 
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            data.myListItems.Clear();
+            data.cancer = 0.0f;
+            data.boost = 0.0f;
+            data.indexGenerateB = 0;
+            data.indexGenerateO = 0;
+            dtn.timeMinute = 0;
+            dtn.timerCal = 0;
+            dtn.timeSecond = 0;
+            dtn.score = 0;
+            data.canvasEndGame.transform.GetChild(0).gameObject.SetActive(false);
+            SceneManager.LoadScene(0);
 
+        }
 
     }
 }

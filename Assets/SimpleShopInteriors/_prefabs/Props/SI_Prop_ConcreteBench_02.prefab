@@ -13,12 +13,13 @@ GameObject:
   - component: {fileID: 2377310}
   - component: {fileID: 1670164140946432584}
   - component: {fileID: 7646601695694529093}
+  - component: {fileID: 416594719}
   m_Layer: 0
   m_Name: SI_Prop_ConcreteBench_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &412006
 Transform:
@@ -107,3 +108,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5709531, y: 1.2940565, z: 1.0545125}
   m_Center: {x: -1.2854766, y: 0.64702827, z: -0.5573466}
+--- !u!208 &416594719
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 149186}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 1.8440001, y: 0.647, z: 1.8440001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -1.8440001, y: 0.647, z: -1.8440001}
+  m_TimeToStationary: 0.5

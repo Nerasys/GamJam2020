@@ -12,12 +12,13 @@ GameObject:
   - component: {fileID: 3362858}
   - component: {fileID: 2348720}
   - component: {fileID: 4806008427581193235}
+  - component: {fileID: 513476601792369805}
   m_Layer: 0
   m_Name: SI_Prop_MopBin_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &472092
 Transform:
@@ -93,3 +94,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.5, z: 1}
   m_Center: {x: 0, y: 1.3063661, z: 0}
+--- !u!208 &513476601792369805
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161020}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.80700004, y: 1.3060001, z: 0.546}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.3060001, z: 0}
+  m_TimeToStationary: 0.5
