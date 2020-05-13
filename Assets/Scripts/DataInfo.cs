@@ -215,8 +215,6 @@ public class DataInfo : MonoBehaviour
             canvasList.transform.GetChild(2).GetChild(indexGenerateO).gameObject.GetComponent<Text>().enabled = true;
             canvasList.transform.GetChild(2).GetChild(indexGenerateO).GetComponent<Text>().text = "-" + prefabsCourse[number].GetComponent<Items>().name;
             indexGenerateO++;
-
-
             myListItems.Add(prefabsCourse[number]);
 
 

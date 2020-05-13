@@ -355,8 +355,17 @@ public class ControlerPlayer : MonoBehaviour
 
 
 
+
+
             dtn.score += other.GetComponent<Items>().scoreGive;
-            data.myListItems.Remove(other.gameObject);
+            for(int i = 0; i < data.myListItems.Count; i++)
+            {
+                if (data.myListItems[i].name.Contains(other.gameObject.name))
+                {
+
+                    data.myListItems[i].GetComponent<Items>().isObligatoire = false;
+                }
+            }
            
 
             Destroy(other.gameObject);
