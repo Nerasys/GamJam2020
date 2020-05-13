@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3395862}
   - component: {fileID: 2391560}
   - component: {fileID: -6429209256461935944}
+  - component: {fileID: -8404239890292782824}
   m_Layer: 0
   m_Name: SI_Prop_Arcade_DanceMachine
   m_TagString: Untagged
@@ -93,3 +94,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.975729, y: 3.2548132, z: 3.6680324}
   m_Center: {x: 0, y: 1.6274066, z: 0.00000011920929}
+--- !u!208 &-8404239890292782824
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 138282}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.98800004, y: 1.6270001, z: 1.8340001}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.6270001, z: 0}
+  m_TimeToStationary: 0.5

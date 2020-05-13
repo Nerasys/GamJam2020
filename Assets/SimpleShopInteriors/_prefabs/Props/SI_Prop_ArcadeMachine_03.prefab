@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3343576}
   - component: {fileID: 2335634}
   - component: {fileID: 7228909564606745998}
+  - component: {fileID: 8368956432898498736}
   m_Layer: 0
   m_Name: SI_Prop_ArcadeMachine_03
   m_TagString: Untagged
@@ -93,3 +94,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.2829552, y: 2.5676787, z: 1.6753664}
   m_Center: {x: 0, y: 1.2838393, z: 0.4759879}
+--- !u!208 &8368956432898498736
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 198108}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.64100003, y: 1.284, z: 0.83800006}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.284, z: 0.476}
+  m_TimeToStationary: 0.5

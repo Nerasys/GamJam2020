@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 3300710}
   - component: {fileID: 2391610}
   - component: {fileID: -8707912422886648371}
+  - component: {fileID: 8025808841563023042}
   m_Layer: 0
   m_Name: SI_Prop_Arcade_ClawMachine_01
   m_TagString: Untagged
@@ -415,6 +416,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.9308128, y: 3.8231113, z: 2.3055124}
   m_Center: {x: 0, y: 1.9115556, z: 0}
+--- !u!208 &8025808841563023042
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 141194}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.96500003, y: 1.9120001, z: 1.153}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.9120001, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &143520
 GameObject:
   m_ObjectHideFlags: 0
