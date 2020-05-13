@@ -7,10 +7,12 @@ public class Ascenceur : MonoBehaviour
 {
     // Start is called before the first frame update
     DataInfo data;
+    DataDontDestroy dtn;
     bool victory = true;
     void Start()
     {
         data = DataInfo.GetInstance();
+        dtn = DataDontDestroy.GetInstance();
     }
 
     // Update is called once per frame
@@ -23,8 +25,8 @@ public class Ascenceur : MonoBehaviour
     {
         if(other.gameObject.tag == "Player")
         {
-            Debug.Log("Player;");
-            for(int i = 0; i < data.myListItems.Count; i++)
+            victory = true;
+            for (int i = 0; i < data.myListItems.Count; i++)
             {
                 if (data.myListItems[i].GetComponent<Items>().isObligatoire == true)
                 {
@@ -36,7 +38,7 @@ public class Ascenceur : MonoBehaviour
 
             if (victory)
             {
-                data.level++;
+                dtn.level++;
                 data.myListItems.Clear();
                 data.isGenerate = false;
                 data.cancer = 0.0f;

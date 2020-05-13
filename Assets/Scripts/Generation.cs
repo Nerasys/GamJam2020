@@ -25,7 +25,7 @@ public class Generation : MonoBehaviour
     int numberRoomD;
 
     [SerializeField] GameObject player;
-
+    DataDontDestroy dtn;
 
     int spawnPlayer;
 
@@ -44,7 +44,7 @@ public class Generation : MonoBehaviour
             Destroy(this);
         }
 
-       
+
     }
 
     public static Generation GetInstance()
@@ -59,6 +59,7 @@ public class Generation : MonoBehaviour
     private void Start()
     {
         data = DataInfo.GetInstance();
+        dtn = DataDontDestroy.GetInstance();
         GenerationRoom();
     }
 
@@ -91,8 +92,8 @@ public class Generation : MonoBehaviour
                 break;
         }
 
-      
-       switch (numberRoomA)
+
+        switch (numberRoomA)
         {
             case 0:
                 roomB.transform.GetChild(0 + wall2).gameObject.SetActive(true);
@@ -135,13 +136,13 @@ public class Generation : MonoBehaviour
         switch (spawnPlayer)
         {
             case 0:
-                for(int i = 0; i < roomA.transform.childCount; i++)
+                for (int i = 0; i < roomA.transform.childCount; i++)
                 {
                     if (roomA.transform.GetChild(i).gameObject.activeSelf)
                     {
 
                         player.transform.position = roomA.transform.GetChild(i).Find("Spawn_Player").position;
-                        
+
                     }
                 }
                 break;
@@ -188,25 +189,38 @@ public class Generation : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-          
+
             data.myListItems.Clear();
             data.isGenerate = false;
             data.cancer = 0.0f;
             data.boost = 0.0f;
             data.indexGenerateB = 0;
-            data.indexGenerateO= 0;
+            data.indexGenerateO = 0;
             data.timertemp = 0.0f;
-            data.timeMinute = 0;
-            data.timerCal = 0;
-            data.timeSecond = 0;
-            data.score = 0;
+            dtn.timeMinute = 0;
+            dtn.timerCal = 0;
+            dtn.timeSecond = 0;
+            dtn.score = 0;
             data.canvasEndGame.transform.GetChild(0).gameObject.SetActive(false);
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        
+
 
         }
+
+
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            dtn.score += 1000;
+            for (int i = 0; i < data.myListItems.Count; i++)
+            {
+                data.myListItems[i].GetComponent<Items>().isObligatoire = false;
+
+            }
+
+        }
+
+
+
     }
-
-
 }
 

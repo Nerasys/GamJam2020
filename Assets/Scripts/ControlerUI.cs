@@ -7,6 +7,7 @@ public class ControlerUI : MonoBehaviour
 {
     // Start is called before the first frame update
     DataInfo dI;
+    DataDontDestroy dtn;
     [SerializeField] Image cancerImage;
     [SerializeField] Image boostImage;
 
@@ -18,6 +19,7 @@ public class ControlerUI : MonoBehaviour
     void Start()
     {
         dI = DataInfo.GetInstance();
+        dtn = DataDontDestroy.GetInstance();
     }
 
     // Update is called once per frame
@@ -49,43 +51,46 @@ public class ControlerUI : MonoBehaviour
 
     private void UpdateTimer()
     {
-        dI.timerCal += Time.deltaTime;
-        dI.timeSecond = (int)dI.timerCal;
+        if (!dI.death)
+        {
+            dtn.timerCal += Time.deltaTime;
+            dtn.timeSecond = (int)dtn.timerCal;
 
-        if (dI.timeSecond > 59)
-        {
-            dI.timeSecond -= 60;
-            dI.timerCal -= 60;
-            dI.timeMinute += 1;
-        }
-        if (dI.timeMinute < 10)
-        {
-            if (dI.timeSecond < 10)
+            if (dtn.timeSecond > 59)
             {
-                timer.text = " 0" + dI.timeMinute.ToString() + " : 0" + dI.timeSecond.ToString();
+                dtn.timeSecond -= 60;
+                dtn.timerCal -= 60;
+                dtn.timeMinute += 1;
+            }
+            if (dtn.timeMinute < 10)
+            {
+                if (dtn.timeSecond < 10)
+                {
+                    timer.text = " 0" + dtn.timeMinute.ToString() + " : 0" + dtn.timeSecond.ToString();
+                }
+                else
+                {
+                    timer.text = " 0" + dtn.timeMinute.ToString() + " : " + dtn.timeSecond.ToString();
+                }
+
             }
             else
             {
-                timer.text = " 0" + dI.timeMinute.ToString() + " : " + dI.timeSecond.ToString();
-            }
+                if (dtn.timeSecond < 10)
+                {
+                    timer.text = dtn.timeMinute.ToString() + " : 0" + dtn.timeSecond.ToString();
+                }
+                else
+                {
+                    timer.text = dtn.timeMinute.ToString() + ": " + dtn.timeSecond.ToString();
+                }
 
-        }
-        else
-        {
-            if (dI.timeSecond < 10)
-            {
-                timer.text = dI.timeMinute.ToString() + " : 0" + dI.timeSecond.ToString();
             }
-            else
-            {
-                timer.text = dI.timeMinute.ToString() + ": " + dI.timeSecond.ToString();
-            }
-
         }
     }
 
     private void UpdateScore()
     {
-        score.text = dI.score.ToString();
+        score.text = dtn.score.ToString();
     }
 }

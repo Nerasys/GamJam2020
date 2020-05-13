@@ -8,23 +8,18 @@ public class DataInfo : MonoBehaviour
     // Start is called before the first frame update
 
     private static DataInfo instance;
-    public float level = 1;
 
-    public int numberObjectInit = 3;
-    public int numberObjectFalcu = 3;
+    DataDontDestroy dataDontDestroy;
 
-    public int score;
     public bool death = false;
-    public float timerCal = 0.0f;
-    public int timeSecond = 0;
-    public int timeMinute = 0;
+
     [SerializeField]
     public float cancer;
     [SerializeField]
     public float cancerMax;
+
     [SerializeField]
     public float multiplicator;
-
     [SerializeField]
     public float boost;
     [SerializeField]
@@ -32,13 +27,10 @@ public class DataInfo : MonoBehaviour
 
     [SerializeField]
     public float cancerBoost;
-
     [SerializeField]
     public float regenBoost;
-
     [SerializeField]
     public float DegatsIA;
-
     [SerializeField]
     public float DistanceDegatsIA;
 
@@ -48,16 +40,13 @@ public class DataInfo : MonoBehaviour
     [SerializeField]
     public List<GameObject> prefabsCourse = new List<GameObject>();
 
-
     [SerializeField]
     public GameObject prefabsPNJ;
-
     [SerializeField] public GameObject canvasList;
     public int indexGenerateO;
     public int indexGenerateB;
     [SerializeField]
     public GameObject canvasEndGame;
-
 
     public bool isGenerate = false;
 
@@ -75,20 +64,15 @@ public class DataInfo : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-           
+
         }
         else
         {
             Destroy(this.gameObject);
         }
 
-        DontDestroyOnLoad(this.gameObject);
-        roomA = GameObject.Find("RNG_Room_A");
-        roomB = GameObject.Find("RNG_Room_B");
-        roomC = GameObject.Find("RNG_Room_C");
-        roomD = GameObject.Find("RNG_Room_D");
-        canvasEndGame = GameObject.Find("@CanvasEndGame");
-        canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
+
+
     }
 
     public static DataInfo GetInstance()
@@ -99,46 +83,24 @@ public class DataInfo : MonoBehaviour
 
     void Start()
     {
-
+        dataDontDestroy = DataDontDestroy.GetInstance();
+        roomA = GameObject.Find("RNG_Room_A");
+        roomB = GameObject.Find("RNG_Room_B");
+        roomC = GameObject.Find("RNG_Room_C");
+        roomD = GameObject.Find("RNG_Room_D");
+        canvasEndGame = GameObject.Find("@CanvasEndGame");
+        canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
+        GenerateItems();
     }
 
     // Update is called once per frame
     void Update()
     {
 
+        BoostRegen();
+        CancerRegen();
+        Death();
 
-        if (timertemp > 2.0f)
-        {
-            if (!isGenerate)
-            {
-
-
-
-                if (roomA && roomB && roomC && roomD)
-                {
-                    GenerateItems();
-                }
-                else
-                {
-                    roomA = GameObject.Find("RNG_Room_A");
-                    roomB = GameObject.Find("RNG_Room_B");
-                    roomC = GameObject.Find("RNG_Room_C");
-                    roomD = GameObject.Find("RNG_Room_D");
-                    items = GameObject.Find("Items");
-                    canvasEndGame = GameObject.Find("@CanvasEndGame");
-                    canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
-                    GenerateItems();
-                }
-                isGenerate = true;
-            }
-            BoostRegen();
-            CancerRegen();
-            Death();
-        }
-        else
-        {
-            timertemp += Time.deltaTime;
-        }
     }
 
 
@@ -154,7 +116,7 @@ public class DataInfo : MonoBehaviour
     {
         if (cancer < cancerMax)
         {
-            cancer += Time.deltaTime * cancerBoost* (level* multiplicator);
+            cancer += Time.deltaTime * cancerBoost * (dataDontDestroy.level * multiplicator);
         }
     }
 
@@ -169,16 +131,16 @@ public class DataInfo : MonoBehaviour
         if (death)
         {
             canvasEndGame.transform.GetChild(0).gameObject.SetActive(true);
-            if (PlayerPrefs.GetInt("scoreMax") < score)
+            if (PlayerPrefs.GetInt("scoreMax") < dataDontDestroy.score)
             {
-                PlayerPrefs.SetInt("scoreMax", score);
-                canvasEndGame.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = score.ToString();
-                canvasEndGame.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = score.ToString();
+                PlayerPrefs.SetInt("scoreMax", dataDontDestroy.score);
+                canvasEndGame.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = dataDontDestroy.score.ToString();
+                canvasEndGame.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = dataDontDestroy.score.ToString();
             }
             else
             {
                 canvasEndGame.transform.GetChild(0).GetChild(4).GetComponent<Text>().text = PlayerPrefs.GetInt("scoreMax").ToString();
-                canvasEndGame.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = score.ToString();
+                canvasEndGame.transform.GetChild(0).GetChild(3).GetComponent<Text>().text = dataDontDestroy.score.ToString();
             }
 
 
@@ -199,18 +161,11 @@ public class DataInfo : MonoBehaviour
     {
 
         List<int> temp = new List<int>();
-        roomA = GameObject.Find("RNG_Room_A");
-        roomB = GameObject.Find("RNG_Room_B");
-        roomC = GameObject.Find("RNG_Room_C");
-        roomD = GameObject.Find("RNG_Room_D");
-        items = GameObject.Find("Items");
-        canvasEndGame = GameObject.Find("@CanvasEndGame");
-        canvasList = GameObject.Find("Canvas").transform.GetChild(7).gameObject;
 
 
         for (int j = 0; j < canvasList.transform.GetChild(3).childCount; j++)
         {
-            canvasList.transform.GetChild(3).GetChild(j).gameObject.GetComponent<Text>().enabled =false;
+            canvasList.transform.GetChild(3).GetChild(j).gameObject.GetComponent<Text>().enabled = false;
         }
 
         for (int j = 0; j < canvasList.transform.GetChild(2).childCount; j++)
@@ -221,7 +176,7 @@ public class DataInfo : MonoBehaviour
 
         int number;
         bool isGood;
-        for (int i = 0; i < numberObjectInit; i++)
+        for (int i = 0; i < dataDontDestroy.numberObjectInit; i++)
         {
 
             do
@@ -238,7 +193,7 @@ public class DataInfo : MonoBehaviour
             } while (isGood == false);
             temp.Add(number);
             prefabsCourse[number].GetComponent<Items>().isObligatoire = true;
-           
+
             canvasList.transform.GetChild(2).GetChild(indexGenerateO).gameObject.GetComponent<Text>().enabled = true;
             canvasList.transform.GetChild(2).GetChild(indexGenerateO).GetComponent<Text>().text = "-" + prefabsCourse[number].GetComponent<Items>().name;
             indexGenerateO++;
@@ -249,7 +204,7 @@ public class DataInfo : MonoBehaviour
 
 
         }
-        for (int i = 0; i < numberObjectFalcu; i++)
+        for (int i = 0; i < dataDontDestroy.numberObjectFalcu; i++)
         {
             isGood = true;
             do
@@ -266,12 +221,12 @@ public class DataInfo : MonoBehaviour
             } while (isGood == false);
             temp.Add(number);
             prefabsCourse[number].GetComponent<Items>().isObligatoire = false;
-            canvasList.transform.GetChild(3).GetChild(indexGenerateB).gameObject.GetComponent<Text>().enabled = true; 
+            canvasList.transform.GetChild(3).GetChild(indexGenerateB).gameObject.GetComponent<Text>().enabled = true;
             canvasList.transform.GetChild(3).GetChild(indexGenerateB).GetComponent<Text>().text = "-" + prefabsCourse[number].GetComponent<Items>().name;
             indexGenerateB++;
-            myListItems.Add(prefabsCourse[number]); 
+            myListItems.Add(prefabsCourse[number]);
         }
-        
+
         for (int i = 0; i < myListItems.Count; i++)
         {
             List<SpawnItem> tempSpawn = new List<SpawnItem>();
@@ -306,9 +261,11 @@ public class DataInfo : MonoBehaviour
                     {
                         if (roomA.transform.GetChild(k).gameObject.activeSelf)
                         {
-                            item = Instantiate(myListItems[i], roomA.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            Vector3 positionItems = roomA.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
+                         
                         }
                     }
                     break;
@@ -317,9 +274,11 @@ public class DataInfo : MonoBehaviour
                     {
                         if (roomB.transform.GetChild(k).gameObject.activeSelf)
                         {
-                            item = Instantiate(myListItems[i], roomB.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            Vector3 positionItems = roomB.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
+
                         }
                     }
                     break;
@@ -328,10 +287,13 @@ public class DataInfo : MonoBehaviour
                     {
                         if (roomC.transform.GetChild(k).gameObject.activeSelf)
                         {
-                            item = Instantiate(myListItems[i], roomC.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            Vector3 positionItems = roomC.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                            //  positionItems.x = -5;
+                            //  positionItems.z += 15;
+                            item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
-                        }
+                        } 
                     }
                     break;
                 case 3:
@@ -339,9 +301,15 @@ public class DataInfo : MonoBehaviour
                     {
                         if (roomD.transform.GetChild(k).gameObject.activeSelf)
                         {
-                            item = Instantiate(myListItems[i], roomD.transform.GetChild(i).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position, Quaternion.identity);
+                            Vector3 positionItems = roomD.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
+                         //   positionItems.x = -5;
+                         //   positionItems.z += 15;
+
+
+                            item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
+
                         }
                     }
                     break;
@@ -352,5 +320,5 @@ public class DataInfo : MonoBehaviour
         }
 
     }
-   
+
 }

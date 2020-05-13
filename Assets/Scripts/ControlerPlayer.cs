@@ -25,6 +25,12 @@ public class ControlerPlayer : MonoBehaviour
     public KeyCode Decelerate = KeyCode.S;
     public KeyCode SteerLeft = KeyCode.Q;
     public KeyCode SteerRight = KeyCode.D;
+
+    public KeyCode Accelerate2 = KeyCode.UpArrow;
+    public KeyCode Decelerate2 = KeyCode.DownArrow;
+    public KeyCode SteerLeft2 = KeyCode.LeftArrow;
+    public KeyCode SteerRight2 = KeyCode.RightArrow;
+
     public KeyCode Boost = KeyCode.Space;
     public bool useRelativeForce = true;
 
@@ -47,6 +53,7 @@ public class ControlerPlayer : MonoBehaviour
 
     Rigidbody rb;
 
+    DataDontDestroy dtn;
     // Use this for initialization
 
 
@@ -75,6 +82,7 @@ public class ControlerPlayer : MonoBehaviour
 
     void Start()
     {
+        dtn = DataDontDestroy.GetInstance();
         rb = gameObject.GetComponent<Rigidbody>();
         data = DataInfo.GetInstance();
     }
@@ -86,14 +94,18 @@ public class ControlerPlayer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        OnDrive();
-        OnLimit();
+        if (!data.death)
+        {
+            OnDrive();
+
+            OnLimit();
+        }
     }
 
     void OnDrive()
     {
         michel.Play("BoucleRoue");
-        if (Input.GetKey(Accelerate))
+        if (Input.GetKey(Accelerate)||Input.GetKey(Accelerate2))
         {
 
             if (useRelativeForce)
@@ -120,7 +132,7 @@ public class ControlerPlayer : MonoBehaviour
             emission2.enabled = false;
         }
 
-        if (Input.GetKey(Decelerate))
+        if (Input.GetKey(Decelerate)|| Input.GetKey(Decelerate2))
         {
             if (useRelativeForce)
             {
@@ -132,7 +144,7 @@ public class ControlerPlayer : MonoBehaviour
             }
         }
 
-        if (Input.GetKey(SteerLeft))
+        if (Input.GetKey(SteerLeft)||Input.GetKey(SteerLeft2))
         {
 
             michel.Play("BoucleThrust");
@@ -148,7 +160,7 @@ public class ControlerPlayer : MonoBehaviour
         }
 
 
-        if (Input.GetKey(SteerRight))
+        if (Input.GetKey(SteerRight) || Input.GetKey(SteerRight2))
         {
             michel.Play("Drift");
             if (useRelativeForce)
@@ -170,7 +182,7 @@ public class ControlerPlayer : MonoBehaviour
             {
                 if (useRelativeForce)
                 {
-                    rb.AddRelativeForce(Vector3.forward * moveSpeed * moveBoost);
+                    rb.AddForce(gameObject.transform.forward * moveSpeed * moveBoost* Time.deltaTime);
                 }
                 else
                 {
@@ -255,7 +267,7 @@ public class ControlerPlayer : MonoBehaviour
 
 
 
-                data.score += other.GetComponent<Items>().scoreGive;
+            dtn.score += other.GetComponent<Items>().scoreGive;
             for (int i = 0; i < data.myListItems.Count; i++)
             {
                 if(data.myListItems[i].name.Contains(other.GetComponent<Items>().name))
