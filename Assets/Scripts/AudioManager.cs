@@ -17,7 +17,6 @@ public class AudioManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
-            return;
         }
         
         DontDestroyOnLoad(gameObject);
@@ -30,15 +29,18 @@ public class AudioManager : MonoBehaviour
             s.source.loop = s.loop;
         }
 
-       
+     
     }
 
     public void Play (string name)
     {
        Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
+        {
             Debug.LogWarning("Son" + name + "non trouvé");
             return;
+        }
+
         s.source.Play();
     }
 
@@ -49,8 +51,20 @@ public class AudioManager : MonoBehaviour
     {
         Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
+        {
             Debug.LogWarning("Son" + name + "non trouvé");
-        return;
+            return;
+        }
         s.source.Stop();
+    }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            Play("Boost");
+
+        }
     }
 }

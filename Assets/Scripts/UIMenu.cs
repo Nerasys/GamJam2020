@@ -10,16 +10,23 @@ public class UIMenu : MonoBehaviour
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject credits;
 
+    GameObject audioManager;
+
+
+
+    private void Awake()
+    {
+        audioManager = GameObject.Find("AudioManager");
+    }
 
     public void Play()
-    {
-        FindObjectOfType<AudioManager>().Play("NewGame");
+    {    
         SceneManager.LoadScene(1);
     }
 
     public void Credit()
     {
-        FindObjectOfType<AudioManager>().Play("Select");
+        audioManager.GetComponent<AudioManager>().Play("Select");
         buttons.SetActive(false);
         credits.SetActive(true);
     }
@@ -27,14 +34,20 @@ public class UIMenu : MonoBehaviour
 
     public void Quit()
     {
-        FindObjectOfType<AudioManager>().Play("Select");
+        audioManager.GetComponent<AudioManager>().Play("Select");
         Application.Quit();
     }
 
     public void Back()
     {
-        FindObjectOfType<AudioManager>().Play("Select");
+        audioManager.GetComponent<AudioManager>().Play("Select");
         buttons.SetActive(true);
         credits.SetActive(false);
     }
+
+
+    private void Update()
+    {
+    }
+
 }

@@ -13,8 +13,8 @@ public class DataInfo : MonoBehaviour
 
     public bool death = false;
 
+    private AudioManager michel;
 
-   
 
     [Header("Gestion Boost")]
     [SerializeField]
@@ -36,9 +36,9 @@ public class DataInfo : MonoBehaviour
     public float multiplicatorWithLevel;
 
 
-    [Header ("Gestion PNJ")]
+    [Header("Gestion PNJ")]
     public float acceptanceArretPNJDestination = 2.0f;
-    public float cancerNPCDamanage =0.5f;
+    public float cancerNPCDamanage = 0.5f;
     public float acceptancePlayerWithDamage = 2.0f;
     public int minPnj = 1;
     public int maxPnj = 5;
@@ -50,7 +50,7 @@ public class DataInfo : MonoBehaviour
     public GameObject roomD;
     public GameObject items;
     GameObject item;
-    GameObject pnj;
+    private GameObject pnj;
     public GameObject[] prefabsPnj;
     [SerializeField]
     public GameObject canvasEndGame;
@@ -59,10 +59,11 @@ public class DataInfo : MonoBehaviour
     public int indexGenerateB;
     [SerializeField]
     public List<GameObject> myListItems = new List<GameObject>();
-
+    private bool gameOver = false;
     [SerializeField]
     public List<GameObject> prefabsCourse = new List<GameObject>();
-
+    [SerializeField]
+    public GameObject listPNJ;
     private void Awake()
     {
 
@@ -76,8 +77,12 @@ public class DataInfo : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        if (michel == null)
+        {
+            michel = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
 
-
+        michel.Play("NewGame");
     }
 
     public static DataInfo GetInstance()
@@ -106,6 +111,7 @@ public class DataInfo : MonoBehaviour
         BoostRegen();
         CancerRegen();
         Death();
+
 
     }
 
@@ -136,6 +142,12 @@ public class DataInfo : MonoBehaviour
 
         if (death)
         {
+            if (!gameOver)
+            {
+                michel.Play("GameOver");
+               gameOver = true;
+
+            }
             canvasEndGame.transform.GetChild(0).gameObject.SetActive(true);
             if (PlayerPrefs.GetInt("scoreMax") < dataDontDestroy.score)
             {
@@ -271,7 +283,7 @@ public class DataInfo : MonoBehaviour
                             item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
-                         
+
                         }
                     }
                     break;
@@ -299,7 +311,7 @@ public class DataInfo : MonoBehaviour
                             item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);
                             item.gameObject.name = myListItems[i].name;
                             item.transform.parent = items.transform;
-                        } 
+                        }
                     }
                     break;
                 case 3:
@@ -308,8 +320,8 @@ public class DataInfo : MonoBehaviour
                         if (roomD.transform.GetChild(k).gameObject.activeSelf)
                         {
                             Vector3 positionItems = roomD.transform.GetChild(k).Find("Spawn_Item_" + spawn.spawn.ToString()).transform.position;
-                         //   positionItems.x = -5;
-                         //   positionItems.z += 15;
+                            //   positionItems.x = -5;
+                            //   positionItems.z += 15;
 
 
                             item = Instantiate(myListItems[i], positionItems, myListItems[i].transform.rotation);

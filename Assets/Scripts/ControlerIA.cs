@@ -8,7 +8,8 @@ public class ControlerIA : MonoBehaviour
     [SerializeField] GameObject player;
     NavMeshAgent nMA;
     DataInfo dI;
-
+    private AudioManager michel;
+    private bool damage = false;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,10 @@ public class ControlerIA : MonoBehaviour
         nMA = GetComponent<NavMeshAgent>();
         dI = DataInfo.GetInstance();
         player = GameObject.FindGameObjectWithTag("Player");
+        if (michel == null)
+        {
+            michel = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
         SetDestination();
     }
 
@@ -75,12 +80,12 @@ public class ControlerIA : MonoBehaviour
         }
 
     }
-    
+
 
     void NewDestination()
     {
 
-        if(nMA.remainingDistance < dI.acceptanceArretPNJDestination)
+        if (nMA.remainingDistance < dI.acceptanceArretPNJDestination)
         {
             SetDestination();
         }
@@ -93,22 +98,10 @@ public class ControlerIA : MonoBehaviour
     void Update()
     {
         NewDestination();
-        CancerPlayer();
- 
-    }
-
-
-    void CancerPlayer()
-    {
-        if(Vector3.Distance(player.transform.position, gameObject.transform.position) < dI.acceptancePlayerWithDamage)
-        {
-            dI.cancer += dI.cancerNPCDamanage* Time.deltaTime;
-
-
-        }
 
     }
 
 
-  
+
+
 }

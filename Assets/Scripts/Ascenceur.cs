@@ -8,11 +8,17 @@ public class Ascenceur : MonoBehaviour
     // Start is called before the first frame update
     DataInfo data;
     DataDontDestroy dtn;
+    private AudioManager michel;
+
     bool victory = true;
     void Start()
     {
         data = DataInfo.GetInstance();
         dtn = DataDontDestroy.GetInstance();
+        if (michel == null)
+        {
+            michel = GameObject.Find("AudioManager").GetComponent<AudioManager>();
+        }
     }
 
     // Update is called once per frame
@@ -38,6 +44,9 @@ public class Ascenceur : MonoBehaviour
 
             if (victory)
             {
+
+                michel.StopPlay("Drift");
+                michel.StopPlay("BoucleRoue");
                 dtn.level++;
                 data.myListItems.Clear();
                 data.cancer = 0.0f;
@@ -45,8 +54,8 @@ public class Ascenceur : MonoBehaviour
                 data.indexGenerateB = 0;
                 data.indexGenerateO = 0;
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-               
 
+           
 
             }
 

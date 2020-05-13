@@ -56,6 +56,13 @@ public class ControlerPlayer : MonoBehaviour
 
     Rigidbody rb;
     DataDontDestroy dtn;
+
+
+    bool isDrift = false;
+    bool isMoveSound = false;
+    bool takeDamage = false;
+    bool damageSound = false;
+
     // Use this for initialization
 
 
@@ -72,9 +79,9 @@ public class ControlerPlayer : MonoBehaviour
 
         if(michel == null)
         {
-            michel = FindObjectOfType<AudioManager>();
+            michel = GameObject.Find("AudioManager").GetComponent<AudioManager>();
         }
-        michel.Play("LevelBegin");
+      //  michel.Play("LevelBegin");
     }
 
     public static ControlerPlayer GetInstance()
@@ -87,6 +94,7 @@ public class ControlerPlayer : MonoBehaviour
         dtn = DataDontDestroy.GetInstance();
         rb = gameObject.GetComponent<Rigidbody>();
         data = DataInfo.GetInstance();
+
     }
 
     void FixedUpdate()
@@ -99,17 +107,70 @@ public class ControlerPlayer : MonoBehaviour
         if (!data.death)
         {
             OnDrive();
-
             OnLimit();
+            TakeDamage();
+        }
+    }
+
+
+    void TakeDamage()
+    {
+        takeDamage = false;
+        for (int i = 0; i < data.listPNJ.transform.childCount; i++)
+        {
+            Debug.Log(Vector3.Distance(transform.position, data.listPNJ.transform.GetChild(i).transform.position));
+            if (Vector3.Distance(transform.position, data.listPNJ.transform.GetChild(i).transform.position) < data.acceptancePlayerWithDamage)
+            {
+                takeDamage = true;
+            
+            }
+        }
+
+        if (takeDamage)
+        {
+            data.cancer += data.cancerNPCDamanage;
+            if (!damageSound)
+            {
+                damageSound = true;
+                switch (Random.Range(0, 4))
+                {
+                    case 0:
+                        michel.Play("TouxF1");
+                        break;
+                    case 1:
+                        michel.Play("TouxF2");
+                        break;
+                    case 2:
+                        michel.Play("TouxH1");
+                        break;
+                    case 3:
+                        michel.Play("TouxH2");
+                        break;
+
+                }
+            }
+        }
+        else
+        {
+            michel.StopPlay("TouxF1");
+            michel.StopPlay("TouxF2");
+            michel.StopPlay("TouxH1");
+            michel.StopPlay("TouxH2");
+            damageSound = false;
         }
     }
 
     void OnDrive()
     {
-        michel.Play("BoucleRoue");
+     
         if (Input.GetKey(Accelerate)||Input.GetKey(Accelerate2))
         {
+            if (!isMoveSound)
+            {
+                michel.Play("BoucleRoue");
+                isMoveSound = true;
 
+            }
             if (useRelativeForce)
             {
                 rb.AddRelativeForce(Vector3.forward * moveSpeed * Time.deltaTime);
@@ -126,13 +187,17 @@ public class ControlerPlayer : MonoBehaviour
             emission2.enabled = true;
 
         }
-        else
+        else if (Input.GetKeyUp(Accelerate) || Input.GetKeyUp(Accelerate2))
         {
+
+            michel.StopPlay("BoucleRoue");
+            isMoveSound = false;
             ParticleSystem.EmissionModule emission = fx1Z.GetComponent<ParticleSystem>().emission;
             emission.enabled = false;
             ParticleSystem.EmissionModule emission2 = fx2Z.GetComponent<ParticleSystem>().emission;
             emission2.enabled = false;
         }
+     
 
         if (Input.GetKey(Decelerate)|| Input.GetKey(Decelerate2))
         {
@@ -148,8 +213,11 @@ public class ControlerPlayer : MonoBehaviour
 
         if (Input.GetKey(SteerLeft)||Input.GetKey(SteerLeft2))
         {
-
-            michel.Play("BoucleThrust");
+            if (!isDrift)
+            {
+                michel.Play("Drift");
+                isDrift = true;
+            }
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * -rotateSpeed * Time.deltaTime);
@@ -160,11 +228,20 @@ public class ControlerPlayer : MonoBehaviour
             }
 
         }
+        else if(Input.GetKeyUp(SteerLeft) || Input.GetKey(SteerLeft2))
+        {
+            isDrift = false;
+            michel.StopPlay("Drift");
+        }
 
 
         if (Input.GetKey(SteerRight) || Input.GetKey(SteerRight2))
         {
-            michel.Play("Drift");
+            if (!isDrift)
+            {
+                michel.Play("Drift");
+                isDrift = true;
+            }
             if (useRelativeForce)
             {
                 rb.AddTorque(Vector3.up * +rotateSpeed * Time.deltaTime);
@@ -174,14 +251,23 @@ public class ControlerPlayer : MonoBehaviour
             {
                 transform.Rotate(Vector3.up * +rotateSpeed);
             }
+
         }
+        else if (Input.GetKeyUp(SteerRight) || Input.GetKey(SteerRight2))
+        {
+            isDrift = false;
+            michel.StopPlay("Drift");
+
+        }
+
 
 
         if (Input.GetKeyDown(Boost))
         {
-            michel.Play("Drift");
+           
             if (data.boost == data.boostMax)
             {
+                michel.Play("Boost");
                 if (useRelativeForce)
                 {
                     rb.AddForce(gameObject.transform.forward * moveSpeed * moveBoost* Time.deltaTime);
@@ -243,7 +329,7 @@ public class ControlerPlayer : MonoBehaviour
     {
         if (other.gameObject.tag == "Ramassable")
         {
-            michel.Play("Confirm");
+            michel.Play("Objet");
 
             if (other.gameObject.GetComponent<Items>().isObligatoire)
             {
@@ -270,14 +356,7 @@ public class ControlerPlayer : MonoBehaviour
 
 
             dtn.score += other.GetComponent<Items>().scoreGive;
-            for (int i = 0; i < data.myListItems.Count; i++)
-            {
-                if(data.myListItems[i].name.Contains(other.GetComponent<Items>().name))
-                {
-                    data.myListItems[i].GetComponent<Items>().isObligatoire = false;
-                }
-            }
-
+            data.myListItems.Remove(other.gameObject);
            
 
             Destroy(other.gameObject);
