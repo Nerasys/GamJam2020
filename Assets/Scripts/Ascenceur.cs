@@ -48,6 +48,7 @@ public class Ascenceur : MonoBehaviour
                 michel.StopPlay("Drift");
                 michel.StopPlay("BoucleRoue");
                 dtn.level++;
+                dtn.score +=500 ;
                 data.myListItems.Clear();
                 data.cancer = 0.0f;
                 data.boost = 0.0f;

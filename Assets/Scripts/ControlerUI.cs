@@ -14,7 +14,7 @@ public class ControlerUI : MonoBehaviour
     [SerializeField] Text score;
     [SerializeField] Text timer;
 
-
+ [SerializeField] Text niveau;
    
     void Start()
     {
@@ -92,5 +92,6 @@ public class ControlerUI : MonoBehaviour
     private void UpdateScore()
     {
         score.text = dtn.score.ToString();
+        niveau.text = dtn.level.ToString();
     }
 }

@@ -205,18 +205,6 @@ public class Generation : MonoBehaviour
 
         }
 
-
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            dtn.score += 1000;
-            for (int i = 0; i < data.myListItems.Count; i++)
-            {
-                data.myListItems[i].GetComponent<Items>().isObligatoire = false;
-
-            }
-
-        }
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             data.myListItems.Clear();

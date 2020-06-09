@@ -173,14 +173,10 @@ public class DataInfo : MonoBehaviour
     }
 
 
-
+  List<int> temp = new List<int>();
 
     void GenerateItems()
     {
-
-        List<int> temp = new List<int>();
-
-
         for (int j = 0; j < canvasList.transform.GetChild(3).childCount; j++)
         {
             canvasList.transform.GetChild(3).GetChild(j).gameObject.GetComponent<Text>().enabled = false;
@@ -334,6 +330,7 @@ public class DataInfo : MonoBehaviour
             }
 
         }
+        temp.Clear();
 
     }
 

@@ -9,7 +9,7 @@ public class UIMenu : MonoBehaviour
 
     [SerializeField] GameObject buttons;
     [SerializeField] GameObject credits;
-
+    [SerializeField] GameObject htp;
     GameObject audioManager;
 
 
@@ -31,6 +31,13 @@ public class UIMenu : MonoBehaviour
         credits.SetActive(true);
     }
 
+ public void HowToPlay()
+    {
+        audioManager.GetComponent<AudioManager>().Play("Select");
+        buttons.SetActive(false);
+        htp.SetActive(true);
+    }
+
 
     public void Quit()
     {
@@ -43,6 +50,7 @@ public class UIMenu : MonoBehaviour
         audioManager.GetComponent<AudioManager>().Play("Select");
         buttons.SetActive(true);
         credits.SetActive(false);
+        htp.SetActive(false);
     }
 
 
